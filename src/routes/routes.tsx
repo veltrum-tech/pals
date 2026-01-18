@@ -3,6 +3,12 @@ import Homepage from "../pages/Home";
 import Root from "../components/layout/root";
 import Services from "@/pages/Services";
 import MotorVehicleRegistration from "@/pages/Services/MotorVehicleRegistration";
+import NewVehicleRegistration from "@/pages/Services/NewVehicleRegistration";
+import VerifyVin from "@/pages/Services/NewVehicleRegistration/components/VerifyVin";
+import OwnerInformation from "@/pages/Services/NewVehicleRegistration/components/OwnerInformation";
+import VehicleDetails from "@/pages/Services/NewVehicleRegistration/components/VehicleDetails";
+import UploadDocuments from "@/pages/Services/NewVehicleRegistration/components/UploadDocuments";
+import ReviewPayment from "@/pages/Services/NewVehicleRegistration/components/ReviewPayment";
 import CertificateMigration from "@/pages/Services/CertificateMigration";
 import EnterVin from "@/pages/Services/CertificateMigration/components/EnterVin";
 import VinInformation from "@/pages/Services/CertificateMigration/components/VinInformation";
@@ -15,6 +21,14 @@ import VehicleInformation from "@/pages/Services/ChangeOwnership/components/Vehi
 import VerifyOtp from "@/pages/Services/ChangeOwnership/components/VerifyOtp";
 import NextOwnerInformation from "@/pages/Services/ChangeOwnership/components/NextOwnerInformation";
 import ReviewInformation from "@/pages/Services/ChangeOwnership/components/ReviewInformation";
+import RenewalLicense from "@/pages/Services/RenewalLicense";
+import EnterVehicleInfo from "@/pages/Services/RenewalLicense/components/EnterVehicleInfo";
+import PaymentConfirmation from "@/pages/Services/RenewalLicense/components/PaymentConfirmation";
+import VehicleValuation from "@/pages/Services/VehicleValuation";
+import ValuationEnterVin from "@/pages/Services/VehicleValuation/components/EnterVin";
+import ValuationResult from "@/pages/Services/VehicleValuation/components/ValuationResult";
+import PaymentCallback from "@/pages/Payment/PaymentCallback";
+import PaymentRedirect from "@/pages/Payment/PaymentRedirect";
 import ComingSoon from "@/pages/ComingSoon";
 import NotFound from "@/pages/NotFound";
 
@@ -36,8 +50,59 @@ const routes = createBrowserRouter([
                 element: <Services />,
             },
             {
+                path: "payment/callback",
+                element: <PaymentCallback />,
+            },
+            // Backend payment redirect handlers
+            {
+                path: "registrations/:requestId/verify",
+                element: <PaymentRedirect />,
+            },
+            {
+                path: "registrations/:requestId/verify-payment",
+                element: <PaymentRedirect />,
+            },
+            {
+                path: "transfers/:requestId/verify-payment",
+                element: <PaymentRedirect />,
+            },
+            {
+                path: "renewals/:requestId/verify-payment",
+                element: <PaymentRedirect />,
+            },
+            {
+                path: "migrations/:requestId/verify-payment",
+                element: <PaymentRedirect />,
+            },
+            {
                 path: "services/motor-vehicle-registration",
                 element: <MotorVehicleRegistration />,
+            },
+            {
+                path: "services/new-vehicle-registration",
+                element: <NewVehicleRegistration />,
+                children: [
+                    {
+                        path: 'verify-vin',
+                        element: <VerifyVin />,
+                    },
+                    {
+                        path: "owner-information",
+                        element: <OwnerInformation />,
+                    },
+                    {
+                        path: "vehicle-details",
+                        element: <VehicleDetails />,
+                    },
+                    {
+                        path: "upload-documents",
+                        element: <UploadDocuments />,
+                    },
+                    {
+                        path: "review-payment",
+                        element: <ReviewPayment />,
+                    },
+                ],
             },
             {
                 path: "services/certificate-migration",
@@ -88,6 +153,34 @@ const routes = createBrowserRouter([
                     {
                         path: "review-information",
                         element: <ReviewInformation />,
+                    },
+                ],
+            },
+            {
+                path: "services/renewal-license",
+                element: <RenewalLicense />,
+                children: [
+                    {
+                        index: true,
+                        element: <EnterVehicleInfo />,
+                    },
+                    {
+                        path: "payment",
+                        element: <PaymentConfirmation />,
+                    },
+                ],
+            },
+            {
+                path: "services/vehicle-valuation",
+                element: <VehicleValuation />,
+                children: [
+                    {
+                        index: true,
+                        element: <ValuationEnterVin />,
+                    },
+                    {
+                        path: "result",
+                        element: <ValuationResult />,
                     },
                 ],
             },

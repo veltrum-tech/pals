@@ -5,77 +5,76 @@ const motorVehicleServices = [
     {
         id: 1,
         name: "New Vehicle Registration",
-        description: "Register a brand new vehicle for the first time with complete documentation and verification process.",
+        description: "Register a vehicle to obtain new Jigawa licensing documents and plates",
         icon: Car,
         features: [
-            "Complete vehicle inspection",
-            "Documentation verification",
-            "License plate issuance",
-            "Digital certificate"
+            "Easy online application",
+            "Online document and vehicle verification",
+            "License and ownership certificate",
+            "Online fee payment"
         ],
-        processingTime: "3-5 business days",
+        processingTime: "1-3 business days",
         category: "Initial Registration",
-        available: false
+        available: true
     },
     {
         id: 2,
         name: "License Renewal",
-        description: "Renew your existing vehicle license to keep your registration current and legally compliant.",
+        description: "Renew your existing Jigawa state vehicle license documents to keep your registration current for another year.",
         icon: RefreshCw,
         features: [
             "Quick renewal process",
-            "Online payment options",
-            "Updated documentation",
-            "Instant confirmation"
+            "Digital license",
+            "Online fee payment"
         ],
-        processingTime: "1-2 business days",
+        processingTime: "1 business day",
         category: "Renewal Services",
-        available: false
+        available: true
     },
     {
         id: 3,
         name: "Change of Ownership",
-        description: "Transfer vehicle ownership from seller to buyer with proper legal documentation and verification.",
+        description: "Use this to start the process of getting a Proof of Ownership Certificate for a new owner upon a vehicle sale or transfer.",
         icon: Users,
         features: [
-            "Ownership verification",
-            "Document transfer",
-            "Updated registration",
-            "New certificate issuance"
+            "Vehicle and ownership verification",
+            "Fraud protection",
+            "Online fee payment",
+            "New digital ownership certificate"
         ],
-        processingTime: "2-3 business days",
+        processingTime: "1-2 business days",
         category: "Transfer Services",
         available: true
     },
     {
         id: 4,
         name: "Certificate Migration",
-        description: "Migrate your vehicle certificate from another state to Jigawa State with seamless transfer process.",
+        description: "This option is for converting your current (existing) Proof of Ownership Certificate to the new digital certificate.",
         icon: FileText,
         features: [
-            "Interstate verification",
-            "Document validation",
-            "State transfer approval",
-            "New state certificate"
+            "Inter-state verification",
+            "Online vehicle and ownership document verification",
+            "Online fee payment",
+            "New digital ownership certificate"
         ],
-        processingTime: "5-7 business days",
+        processingTime: "1-2 business days",
         category: "Migration Services",
         available: true
     },
     {
         id: 5,
         name: "Vehicle Valuation & VAT",
-        description: "Get professional vehicle valuation for tax purposes and VAT assessment services.",
+        description: "Get professional vehicle valuation for tax purposes and VAT assessment services. NRS approved vehicle valuation for tax (VAT) calculation. Improper calculation and payment of VAT could result in problems during ownership change and licensing",
         icon: DollarSign,
         features: [
             "Professional assessment",
-            "Market value analysis",
+            "Offical valuation report",
             "VAT calculation",
-            "Official valuation report"
+            "Multiple VAT payment options"
         ],
-        processingTime: "2-4 business days",
+        processingTime: "1-2 business days",
         category: "Assessment Services",
-        available: false
+        available: true
     }
 ]
 
@@ -85,7 +84,13 @@ export default function MotorVehicleRegistration() {
     const handleServiceClick = (service: typeof motorVehicleServices[0]) => {
         if (!service.available) return
 
-        if (service.id === 4) {
+        if (service.id === 1) {
+            // New Vehicle Registration
+            navigate("/services/new-vehicle-registration/verify-vin")
+        } else if (service.id === 2) {
+            // License Renewal
+            navigate("/services/renewal-license")
+        } else if (service.id === 4) {
             // Certificate Migration
             navigate("/services/certificate-migration/enter-vin")
         } else if (service.id === 3) {
@@ -99,17 +104,12 @@ export default function MotorVehicleRegistration() {
             {/* Hero Section */}
             <div className="bg-secondary py-16 px-4">
                 <div className="max-w-7xl mx-auto">
-                    <div className="flex items-center gap-3 mb-4">
-                        <div className="w-12 h-12 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center">
-                            <Car className="w-6 h-6 text-white" />
-                        </div>
-                        <span className="text-white/80">Vehicle Services</span>
-                    </div>
+                    
                     <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-                        Motor Vehicle Registration
+                        Motor Vehicle Services
                     </h1>
                     <p className="text-white/90 text-lg max-w-2xl">
-                        Complete motor vehicle registration services including new registrations, renewals, transfers, and valuations. Fast, secure, and fully digital.
+                        Online application and licensing documents delivery for new registrations, renewals, and owenership transfers. Fast, secure, and fully digital.
                     </p>
                 </div>
             </div>
@@ -156,7 +156,7 @@ export default function MotorVehicleRegistration() {
                                 <Calendar className="w-5 h-5 text-primary" />
                             </div>
                             <div>
-                                <div className="text-2xl font-bold text-gray-900">1-7</div>
+                                <div className="text-2xl font-bold text-gray-900">1-3</div>
                                 <div className="text-sm text-gray-600">Days Processing</div>
                             </div>
                         </div>
@@ -168,7 +168,7 @@ export default function MotorVehicleRegistration() {
             <div className="max-w-7xl mx-auto px-4 py-12">
                 <div className="mb-8">
                     <h2 className="text-3xl font-bold text-gray-900 mb-2">Available Services</h2>
-                    <p className="text-gray-600">Choose the service you need and start your application process</p>
+                    <p className="text-gray-600">Choose a service and start your application</p>
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -206,7 +206,7 @@ export default function MotorVehicleRegistration() {
 
                                 {/* Features */}
                                 <div className="mb-6">
-                                    <h4 className="text-sm font-semibold text-gray-700 mb-3">What's Included:</h4>
+                                    <h4 className="text-sm font-semibold text-gray-700 mb-3">Features:</h4>
                                     <ul className="grid grid-cols-2 gap-2">
                                         {service.features.map((feature, idx) => (
                                             <li key={idx} className="flex items-center gap-2 text-sm text-gray-600">
@@ -222,8 +222,8 @@ export default function MotorVehicleRegistration() {
                                     disabled={!service.available}
                                     onClick={() => handleServiceClick(service)}
                                     className={`w-full py-3 px-6 rounded-lg font-medium flex items-center justify-center gap-2 transition-all duration-200 ${service.available
-                                            ? "bg-secondary text-white hover:bg-secondary/90 group-hover:shadow-lg group-hover:shadow-secondary/20 cursor-pointer"
-                                            : "bg-gray-200 text-gray-500 cursor-not-allowed"
+                                        ? "bg-secondary text-white hover:bg-secondary/90 group-hover:shadow-lg group-hover:shadow-secondary/20 cursor-pointer"
+                                        : "bg-gray-200 text-gray-500 cursor-not-allowed"
                                         }`}
                                 >
                                     <span>{service.available ? "Start Application" : "Coming Soon"}</span>

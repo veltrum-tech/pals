@@ -13,8 +13,7 @@ import type {
 } from "../types/transfers";
 
 // Base URL - update this with your actual API URL
-const BASE_URL =
-  import.meta.env.VITE_API_BASE_URL;
+const BASE_URL = import.meta.env.VITE_API_BASE_URL;
 const TENANT_ID = import.meta.env.VITE_TENANT_ID || "jigawa";
 
 export const transfersApi = createApi({
@@ -95,6 +94,19 @@ export const transfersApi = createApi({
         },
       }),
     }),
+    verifyTransferPayment: builder.mutation<
+      VerifyOtpResponse,
+      { requestId: string; reference: string }
+    >({
+      query: ({ requestId, reference }) => ({
+        url: `/transfers/${requestId}/verify-payment`,
+        method: "POST",
+        body: { reference },
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }),
+    }),
   }),
 });
 
@@ -104,4 +116,5 @@ export const {
   useVerifyOtpMutation,
   useSubmitTransferMutation,
   useInitiateTransferPaymentMutation,
+  useVerifyTransferPaymentMutation,
 } = transfersApi;

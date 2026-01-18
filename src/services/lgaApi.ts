@@ -19,6 +19,12 @@ export const lgaApi = createApi({
   }),
   tagTypes: ["LGA"],
   endpoints: (builder) => ({
+    getState: builder.query<string[], void>({
+      query: () => ({
+        url: "/lgas/states",
+        method: "GET",
+      }),
+    }),
     getLGAs: builder.query<LGA[], string>({
       query: (stateId) => ({
         url: stateId ? `/lgas?state=${stateId}` : "/lgas",
@@ -28,4 +34,4 @@ export const lgaApi = createApi({
   }),
 });
 
-export const { useGetLGAsQuery } = lgaApi;
+export const { useGetLGAsQuery, useGetStateQuery } = lgaApi;

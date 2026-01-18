@@ -1,14 +1,15 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { ArrowLeft, Car, Hash, Info, Search } from "lucide-react"
-import { useVerifyVinMutation } from "../../../../services/migrationsApi"
+import { ArrowLeft, Car, Hash, Info, AlertCircle } from "lucide-react"
+import { toast } from "sonner"
+import { useVerifyVinForRegistrationMutation } from "@/services/registrationsApi"
 
-export default function EnterVin() {
+export default function VerifyVin() {
     const navigate = useNavigate()
     const [vin, setVin] = useState("")
     const [errors, setErrors] = useState<{ vin?: string; api?: string }>({})
 
-    const [verifyVin, { isLoading }] = useVerifyVinMutation()
+    const [verifyVin, { isLoading }] = useVerifyVinForRegistrationMutation()
 
     const validateVin = () => {
         const newErrors: { vin?: string } = {}
@@ -30,28 +31,23 @@ export default function EnterVin() {
 
         try {
             const response = await verifyVin({ vin: vin.trim() }).unwrap()
-
-            navigate("/services/certificate-migration/vin-information", {
+            toast.success("VIN verified successfully!")
+            navigate("/services/new-vehicle-registration/owner-information", {
                 state: {
-                    requestId: response.requestId,
-                    vehicleInfo: {
-                        make: response.vehicleInfo.make,
-                        model: response.vehicleInfo.model,
-                        year: response.vehicleInfo.year.toString(),
-                        color: response.vehicleInfo.color,
-                        vin: response.vehicleInfo.vin
-                    }
+                    vin: vin.trim(),
+                    vinVerified: true,
+                    vehicleInfo: response.vehicleInfo
                 }
             })
         } catch (error: any) {
             console.error("VIN verification failed:", error)
+            const errorMessage = error?.data?.message || "Failed to verify VIN. Please check and try again."
+            toast.error(errorMessage)
             setErrors({
-                api: error?.data?.message || "Failed to verify VIN. Please check and try again."
+                api: errorMessage
             })
         }
     }
-
-    const isValidLength = vin.trim().length === 17
 
     return (
         <main className="min-h-screen">
@@ -75,18 +71,18 @@ export default function EnterVin() {
                             <div className="p-2 bg-white/20 rounded-lg">
                                 <Car className="w-6 h-6 text-white" />
                             </div>
-                            <h1 className="text-xl font-bold text-white">
+                            <h1 className="text-2xl md:text-3xl font-bold text-white">
                                 Enter Vehicle Identification Number
                             </h1>
                         </div>
-                        <p className="text-white text-sm">
-                            Please provide the VIN of the vehicle you nned a digital certificate for.
+                        <p className="text-green-100 text-sm md:text-base">
+                            Please enter the VIN of the vehicle you want to register
                         </p>
                     </div>
 
                     {/* Card Content */}
                     <form onSubmit={handleSubmit} className="p-6 md:p-8 space-y-6">
-                        {/* VIN Input Card */}
+                        {/* VIN Input Section */}
                         <div className="bg-white border border-gray-200 rounded overflow-hidden shadow-sm">
                             <div className="flex items-center gap-3 px-5 py-4 border-b border-gray-200">
                                 <div className="p-2 bg-[#B41662]/10 rounded-lg">
@@ -95,42 +91,43 @@ export default function EnterVin() {
                                 <h3 className="text-lg font-semibold text-gray-800">VIN Details</h3>
                             </div>
                             <div className="p-5">
-                                <label htmlFor="vin" className="flex items-center gap-2 text-sm font-medium text-gray-700 mb-2">
-                                    <Search className="w-4 h-4 text-gray-400" />
-                                    Vehicle Identification Number (VIN) <span className="text-red-500">*</span>
+                                <label htmlFor="vin" className="flex items-center gap-2 text-sm font-medium text-gray-700 mb-3">
+                                    <Car className="w-4 h-4 text-gray-400" />
+                                    Vehicle Identification Number (VIN)
                                 </label>
-                                <input
-                                    id="vin"
-                                    type="text"
-                                    value={vin}
-                                    onChange={(e) => {
-                                        setVin(e.target.value.toUpperCase())
-                                        if (errors.vin || errors.api) setErrors({})
-                                    }}
-                                    maxLength={17}
-                                    className={`w-full border-2 ${errors.vin ? 'border-red-400 bg-red-50' : 'border-gray-200 focus:border-green-500'} rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-green-200 transition-all uppercase font-mono tracking-wider`}
-                                    placeholder="Enter 17-character VIN"
-                                />
-                                <div className="flex items-center justify-between mt-2">
-                                    {errors.vin ? (
-                                        <p className="text-sm text-red-600 font-medium">{errors.vin}</p>
-                                    ) : (
-                                        <span className="text-xs text-gray-400">17 characters required</span>
-                                    )}
-                                    <span className={`text-xs font-medium ${isValidLength ? 'text-green-600' : 'text-gray-400'}`}>
+                                <div className="relative">
+                                    <input
+                                        id="vin"
+                                        type="text"
+                                        value={vin}
+                                        onChange={(e) => {
+                                            setVin(e.target.value.toUpperCase())
+                                            if (errors.vin || errors.api) setErrors({})
+                                        }}
+                                        maxLength={17}
+                                        className={`w-full border-2 ${errors.vin
+                                                ? 'border-red-400 focus:border-red-500 focus:ring-red-200'
+                                                : 'border-gray-200 focus:border-green-500 focus:ring-green-200'
+                                            } rounded-lg px-4 py-3.5 focus:outline-none focus:ring-4 uppercase text-base font-mono tracking-wider transition-all`}
+                                        placeholder="Enter 17-character VIN"
+                                        disabled={isLoading}
+                                    />
+                                    <span className={`absolute right-4 top-1/2 -translate-y-1/2 text-sm font-medium ${vin.length === 17 ? 'text-green-600' : 'text-gray-400'
+                                        }`}>
                                         {vin.length}/17
                                     </span>
                                 </div>
+                                {errors.vin && (
+                                    <p className="mt-2 text-sm text-red-600 font-medium">{errors.vin}</p>
+                                )}
                             </div>
                         </div>
 
                         {/* API Error Display */}
                         {errors.api && (
                             <div className="flex items-start gap-3 p-4 bg-red-50 border border-red-200 rounded">
-                                <div className="p-1 bg-red-100 rounded-full mt-0.5">
-                                    <svg className="w-4 h-4 text-red-600" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
-                                    </svg>
+                                <div className="p-1.5 bg-red-100 rounded-full mt-0.5">
+                                    <AlertCircle className="w-4 h-4 text-red-600" />
                                 </div>
                                 <p className="text-sm text-red-700">{errors.api}</p>
                             </div>
@@ -142,24 +139,31 @@ export default function EnterVin() {
                                 <Info className="w-4 h-4 text-blue-600" />
                             </div>
                             <p className="text-sm text-blue-700">
-                                <strong>Note:</strong> The VIN is a unique 17-character code used to identify your vehicle.
-                                You can find it on your vehicle registration documents, custom papers or on the driver's side dashboard.
+                                <strong>VIN Format:</strong> A 17-character unique identifier found on your vehicle's registration or door frame.
                             </p>
                         </div>
 
-                        {/* Submit Button */}
-                        <div className="pt-4 border-t border-gray-100">
+                        {/* Action Buttons */}
+                        <div className="flex flex-col sm:flex-row gap-4 pt-4 border-t border-gray-100">
+                            <button
+                                type="button"
+                                onClick={() => navigate(-1)}
+                                className="flex-1 sm:flex-none px-8 py-4 border-2 border-gray-200 text-gray-700 rounded font-semibold hover:bg-gray-50 hover:border-gray-300 transition-all disabled:opacity-50"
+                                disabled={isLoading}
+                            >
+                                Cancel
+                            </button>
                             <button
                                 type="submit"
-                                disabled={isLoading || !isValidLength}
-                                className={`w-full sm:w-auto flex items-center justify-center gap-3 py-4 px-8 rounded font-semibold text-white transition-all duration-300 shadow-lg ${isValidLength && !isLoading
+                                disabled={isLoading || !vin.trim()}
+                                className={`flex-1 sm:flex-none flex items-center justify-center gap-3 py-4 px-8 rounded font-semibold text-white transition-all duration-300 shadow-lg ${vin.trim() && !isLoading
                                         ? 'bg-green-600 hover:shadow-green-200 hover:-translate-y-0.5 active:translate-y-0'
                                         : 'bg-gray-300 cursor-not-allowed shadow-none'
                                     }`}
                             >
-                                <Search className="w-5 h-5" />
-                                <span>{isLoading ? "Verifying..." : "Continue"}</span>
-                                {!isLoading && isValidLength && (
+                                <Car className="w-5 h-5" />
+                                <span>{isLoading ? "Verifying..." : "Verify VIN"}</span>
+                                {!isLoading && vin.trim() && (
                                     <svg className="w-5 h-5 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                                     </svg>
@@ -171,7 +175,7 @@ export default function EnterVin() {
 
                 {/* Footer Note */}
                 <p className="text-center text-xs text-gray-400 mt-6">
-                    Enter your VIN to begin the certificate migration process
+                    Your information is securely processed
                 </p>
             </div>
         </main>

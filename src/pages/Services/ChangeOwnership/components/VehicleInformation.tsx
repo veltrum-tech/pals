@@ -44,7 +44,6 @@ export default function VehicleInformation() {
                 data: { method }
             }).unwrap()
 
-            // Navigate to OTP verification on success
             navigate("/services/change-ownership/verify-otp", {
                 state: {
                     ...state,
@@ -58,142 +57,155 @@ export default function VehicleInformation() {
     }
 
     const CustomCheckbox = ({ checked, onChange, label }: { checked: boolean; onChange: () => void; label: string }) => (
-        <div className="flex items-start gap-3">
-            <button
-                type="button"
-                onClick={onChange}
-                className="shrink-0 w-6 h-6 mt-0.5 rounded border-2 border-[#B41662] flex items-center justify-center cursor-pointer transition-colors"
-                style={{ backgroundColor: checked ? "#B41662" : "white" }}
+        <div
+            onClick={onChange}
+            className={`flex items-center gap-4 p-4 rounded border-2 cursor-pointer transition-all duration-300 ${checked
+                ? 'border-[#B41662] bg-[#B41662]/5 shadow-md'
+                : 'border-gray-200 bg-white hover:border-green-300 hover:bg-green-50/30'
+                }`}
+        >
+            <div
+                className={`shrink-0 w-6 h-6 rounded-lg border-2 flex items-center justify-center transition-all duration-300 ${checked
+                    ? 'border-[#B41662] bg-[#B41662] scale-110'
+                    : 'border-gray-300 bg-white'
+                    }`}
             >
                 {checked && <Check className="w-4 h-4 text-white" strokeWidth={3} />}
-            </button>
-            <label onClick={onChange} className="text-sm text-gray-900 cursor-pointer leading-relaxed">
-                {label}
-            </label>
+            </div>
+            <div className="flex items-center gap-3">
+                <span className={`text-sm font-medium ${checked ? 'text-gray-900' : 'text-gray-600'}`}>
+                    {label}
+                </span>
+            </div>
+        </div>
+    )
+
+    const InfoItem = ({ label, value }: { label: string; value: string | number }) => (
+        <div className="bg-gray-50/80 rounded-lg p-3 border border-gray-100">
+            <p className="text-xs text-gray-500 uppercase tracking-wide mb-1">{label}</p>
+            <p className="text-gray-900 font-semibold">{value}</p>
         </div>
     )
 
     return (
-        <main className="container mx-auto min-h-screen">
-            {/* Header */}
-            <div className="text-secondary py-6 px-4">
+        <main className="min-h-screen">
+            <div className="container mx-auto px-4 py-6">
+                {/* Header */}
                 <button
                     onClick={() => navigate(-1)}
-                    className=" flex items-center gap-2 hover:opacity-80 transition-opacity"
+                    className="group flex items-center gap-2 text-gray-600 hover:text-green-600 transition-colors mb-8"
                 >
-                    <ArrowLeft size={20} />
-                    <span className="text-base">Back</span>
+                    <div className="p-2 rounded-full bg-white shadow-sm group-hover:shadow-md group-hover:bg-green-50 transition-all">
+                        <ArrowLeft size={18} />
+                    </div>
+                    <span className="text-sm font-medium">Back</span>
                 </button>
-            </div>
 
-            {/* Content Section */}
-            <section className="bg-white p-6 md:p-8">
-                <div className="flex flex-col min-h-[60vh] justify-between">
-                    <div>
-                        {/* Step Header */}
-                        <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">
+                {/* Main Card */}
+                <div className="bg-white rounded shadow-xl shadow-gray-200/50 overflow-hidden">
+                    {/* Card Header */}
+                    <div className="bg-green-600 px-6 py-8 md:px-8">
+                        <h1 className="text-2xl md:text-3xl font-bold text-white mb-2">
                             Vehicle & Owner Information
-                        </h2>
-
-                        <p className="text-gray-600 text-base mb-8">
-                            Please verify the vehicle and current owner information
+                        </h1>
+                        <p className="text-white text-sm md:text-base">
+                            Please review the details below before proceeding with verification details below
                         </p>
+                    </div>
 
-                        {/* Certificate Number */}
-                        <div className="mb-6 p-4 bg-gray-50 border border-gray-200 rounded-lg">
-                            <p className="text-sm text-gray-500 mb-1">Certificate Number</p>
-                            <p className="text-lg font-semibold text-gray-900">{state.certificateNo}</p>
+                    {/* Card Content */}
+                    <div className="p-6 md:p-8 space-y-6">
+                        {/* Certificate Badge */}
+                        <div className="inline-flex items-center px-5 py-2.5">
+                            <div>
+                                <span className="text-lg font-semibold text-gray-800 uppercase tracking-wide">Certificate No.</span>
+                                <p className="text-green-800 font-bold text-lg -mt-0.5">{state.certificateNo}</p>
+                            </div>
                         </div>
 
-                        {/* Vehicle Information */}
-                        <div className="mb-6 p-6 bg-gray-50 border border-gray-200 rounded-lg">
-                            <h3 className="text-lg font-semibold text-gray-900 mb-4">Vehicle Details</h3>
-                            <div className="grid grid-cols-2 gap-4 text-sm">
-                                <div>
-                                    <span className="text-gray-500">Make - </span>
-                                    <span className="text-gray-900 font-medium">{state.vehicleInfo.make}</span>
-                                </div>
-                                <div>
-                                    <span className="text-gray-500">Model - </span>
-                                    <span className="text-gray-900 font-medium">{state.vehicleInfo.model}</span>
-                                </div>
-                                <div>
-                                    <span className="text-gray-500">Year - </span>
-                                    <span className="text-gray-900 font-medium">{state.vehicleInfo.year}</span>
-                                </div>
-                                <div>
-                                    <span className="text-gray-500">Color - </span>
-                                    <span className="text-gray-900 font-medium">{state.vehicleInfo.color}</span>
-                                </div>
-                                <div>
-                                    <span className="text-gray-500">Plate No - </span>
-                                    <span className="text-gray-900 font-medium">{state.vehicleInfo.plate_number}</span>
+                        {/* Vehicle Details Card */}
+                        <div className="bg-white border border-gray-200 rounded overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                            <div className="flex items-center gap-3 px-5 py-4 border-b border-gray-200">
+
+                                <h3 className="text-lg font-semibold text-gray-800">Vehicle Details</h3>
+                            </div>
+                            <div className="p-5">
+                                <div className="grid grid-cols-2 lg:grid-cols-3 gap-3">
+                                    <InfoItem label="Make" value={state.vehicleInfo.make} />
+                                    <InfoItem label="Model" value={state.vehicleInfo.model} />
+                                    <InfoItem label="Year" value={state.vehicleInfo.year} />
+                                    <InfoItem label="Color" value={state.vehicleInfo.color} />
+                                    <InfoItem label="Plate Number" value={state.vehicleInfo.plate_number} />
                                 </div>
                             </div>
                         </div>
 
-                        {/* Current Owner Information */}
-                        <div className="mb-6 p-6 bg-gray-50 border border-gray-200 rounded-lg">
-                            <h3 className="text-lg font-semibold text-gray-900 mb-4">Current Owner</h3>
-                            <div className="space-y-3 text-sm">
-                                <div>
-                                    <span className="text-gray-500">Name - </span>
-                                    <span className="text-gray-900 font-medium">{state.currentOwner.name}</span>
-                                </div>
-                                <div>
-                                    <span className="text-gray-500">Phone - </span>
-                                    <span className="text-gray-900 font-medium">{state.currentOwner.phone}</span>
-                                </div>
-                                <div>
-                                    <span className="text-gray-500">Email - </span>
-                                    <span className="text-gray-900 font-medium">{state.currentOwner.email}</span>
+                        {/* Owner Details Card */}
+                        <div className="bg-white border border-gray-200 rounded overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                            <div className="flex items-center gap-3 px-5 py-4 border-b border-gray-200">
+
+                                <h3 className="text-lg font-semibold text-gray-800">Current Owner</h3>
+                            </div>
+                            <div className="p-5">
+                                <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                                    <InfoItem label="Full Name" value={state.currentOwner.name} />
+                                    <InfoItem label="Phone Number" value={state.currentOwner.phone} />
+                                    <InfoItem label="Email Address" value={state.currentOwner.email} />
                                 </div>
                             </div>
                         </div>
 
                         {/* Confirmation Checkbox */}
-                        <div className="mb-6 border-2 border-[#B41662] rounded-lg p-6">
-                            <CustomCheckbox
-                                checked={confirmed}
-                                onChange={() => setConfirmed(!confirmed)}
-                                label="This is the correct vehicle and certificate to be processed"
-                            />
-                        </div>
+                        <CustomCheckbox
+                            checked={confirmed}
+                            onChange={() => setConfirmed(!confirmed)}
+                            label="For security, current owner will confirm transfer request by OTP"
+                        />
 
-                        {/* API Error Display */}
+                        {/* Error Display */}
                         {error && (
-                            <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
-                                <p className="text-sm text-red-800">{error}</p>
+                            <div className="flex items-start gap-3 p-4 bg-red-50 border border-red-200 rounded">
+                                <div className="p-1 bg-red-100 rounded-full mt-0.5">
+                                    <svg className="w-4 h-4 text-red-600" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
+                                    </svg>
+                                </div>
+                                <p className="text-sm text-red-700">{error}</p>
                             </div>
                         )}
 
-                        {/* OTP Buttons */}
-                        <div>
-                            <p className="text-sm font-medium text-gray-700 mb-3">Send OTP to verify ownership:</p>
-                            <div className="flex flex-col sm:flex-row gap-3">
-                                <button
-                                    type="button"
-                                    onClick={() => handleSendOTP('email')}
-                                    disabled={!confirmed || isLoading}
-                                    className="flex-1 flex items-center justify-center gap-2 py-3 px-6 bg-green-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed"
-                                >
-                                    <Mail className="w-5 h-5" />
-                                    <span>{isLoading ? "Sending..." : "Send OTP via Email"}</span>
-                                </button>
-                                {/* <button
-                                    type="button"
-                                    onClick={() => handleSendOTP('sms')}
-                                    disabled={!confirmed || isLoading}
-                                    className="flex-1 flex items-center justify-center gap-2 py-3 px-6 bg-green-600 text-white rounded-lg font-medium hover:bg-green-700 transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed"
-                                >
-                                    <MessageSquare className="w-5 h-5" />
-                                    <span>{isLoading ? "Sending..." : "Send OTP via SMS"}</span>
-                                </button> */}
-                            </div>
+                        {/* OTP Section */}
+                        <div className="pt-4 border-t border-gray-100">
+                            <p className="text-sm font-medium text-gray-700 mb-4 flex items-center gap-2">
+                                <span className="w-1.5 h-1.5 bg-green-500 rounded-full"></span>
+                                Send OTP to verify ownership
+                            </p>
+                            <button
+                                type="button"
+                                onClick={() => handleSendOTP('email')}
+                                disabled={!confirmed || isLoading}
+                                className={`w-full sm:w-auto flex items-center justify-center gap-3 py-4 px-8 rounded font-semibold text-white transition-all duration-300 shadow-lg ${confirmed && !isLoading
+                                    ? 'bg-green-600 hover:shadow-green-200 hover:-translate-y-0.5 active:translate-y-0'
+                                    : 'bg-gray-300 cursor-not-allowed shadow-none'
+                                    }`}
+                            >
+                                <Mail className="w-5 h-5" />
+                                <span>{isLoading ? "Sending OTP..." : "Send OTP via Email"}</span>
+                                {!isLoading && confirmed && (
+                                    <svg className="w-5 h-5 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                                    </svg>
+                                )}
+                            </button>
                         </div>
                     </div>
                 </div>
-            </section>
+
+                {/* Footer Note */}
+                <p className="text-center text-xs text-gray-400 mt-6">
+                    By proceeding, you confirm that all information displayed is accurate
+                </p>
+            </div>
         </main>
     )
 }

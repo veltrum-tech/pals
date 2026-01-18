@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useNavigate, useLocation } from "react-router-dom"
-import { ArrowLeft, Check } from "lucide-react"
+import { ArrowLeft, Check, Car, Shield } from "lucide-react"
 
 interface LocationState {
     vin: string
@@ -22,7 +22,6 @@ export default function VinInformation() {
     const [checkbox1, setCheckbox1] = useState(false)
     const [checkbox2, setCheckbox2] = useState(false)
 
-    // Redirect if no state
     if (!state || !state.requestId) {
         navigate("/services/certificate-migration/enter-vin")
         return null
@@ -37,89 +36,109 @@ export default function VinInformation() {
     }
 
     const CustomCheckbox = ({ checked, onChange, label }: { checked: boolean; onChange: () => void; label: string }) => (
-        <div className="flex items-start gap-3">
-            <button
-                type="button"
-                onClick={onChange}
-                className="shrink-0 w-6 h-6 mt-0.5 rounded border-2 border-[#B41662] flex items-center justify-center cursor-pointer transition-colors"
-                style={{ backgroundColor: checked ? "#B41662" : "white" }}
+        <div
+            onClick={onChange}
+            className={`flex items-center gap-4 p-4 rounded border-2 cursor-pointer transition-all duration-300 ${checked
+                    ? 'border-[#B41662] bg-[#B41662]/5 shadow-md'
+                    : 'border-gray-200 bg-white hover:border-green-300 hover:bg-green-50/30'
+                }`}
+        >
+            <div
+                className={`shrink-0 w-6 h-6 rounded-lg border-2 flex items-center justify-center transition-all duration-300 ${checked
+                        ? 'border-[#B41662] bg-[#B41662] scale-110'
+                        : 'border-gray-300 bg-white'
+                    }`}
             >
                 {checked && <Check className="w-4 h-4 text-white" strokeWidth={3} />}
-            </button>
-            <label onClick={onChange} className="text-sm text-gray-900 cursor-pointer leading-relaxed">
-                {label}
-            </label>
+            </div>
+            <div className="flex items-center gap-3">
+                <Shield className={`w-5 h-5 ${checked ? 'text-[#B41662]' : 'text-gray-400'}`} />
+                <span className={`text-sm font-medium ${checked ? 'text-gray-900' : 'text-gray-600'}`}>
+                    {label}
+                </span>
+            </div>
         </div>
     )
 
+    const InfoItem = ({ label, value }: { label: string; value: string }) => (
+        <div className="bg-gray-50/80 rounded-lg p-3 border border-gray-100">
+            <p className="text-xs text-gray-500 uppercase tracking-wide mb-1">{label}</p>
+            <p className="text-gray-900 font-semibold">{value}</p>
+        </div>
+    )
+
+    const bothChecked = checkbox1 && checkbox2
+
     return (
-        <main className="container mx-auto min-h-screen">
-            {/* Header */}
-            <div className="text-secondary py-6 px-4">
+        <main className="min-h-screen">
+            <div className="container mx-auto px-4 py-6">
+                {/* Header */}
                 <button
                     onClick={() => navigate(-1)}
-                    className=" flex items-center gap-2 hover:opacity-80 transition-opacity"
+                    className="group flex items-center gap-2 text-gray-600 hover:text-green-600 transition-colors mb-8"
                 >
-                    <ArrowLeft size={20} />
-                    <span className="text-base">Back</span>
+                    <div className="p-2 rounded-full bg-white shadow-sm group-hover:shadow-md group-hover:bg-green-50 transition-all">
+                        <ArrowLeft size={18} />
+                    </div>
+                    <span className="text-sm font-medium">Back</span>
                 </button>
-            </div>
 
-            {/* Content Section */}
-            <section className="bg-white p-6 md:p-8">
-                <div className="flex flex-col min-h-[60vh] justify-between">
-                    <div>
-                        {/* Step Header */}
-                        <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">
-                            Vehicle Information
-                        </h2>
-
-                        <p className="text-gray-600 text-base mb-8">
-                            Please verify the vehicle information below
-                        </p>                        {/* Request ID */}
-                        <div className="mb-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
-                            <p className="text-sm text-blue-800">
-                                <strong>Request ID:</strong> {state.requestId}
-                            </p>
+                {/* Main Card */}
+                <div className="bg-white rounded shadow-xl shadow-gray-200/50 overflow-hidden">
+                    {/* Card Header */}
+                    <div className="bg-green-600 px-6 py-8 md:px-8">
+                        <div className="flex items-center gap-3 mb-2">
+                            <div className="p-2 bg-white/20 rounded-lg">
+                                <Car className="w-6 h-6 text-white" />
+                            </div>
+                            <h1 className="text-2xl md:text-3xl font-bold text-white">
+                                Vehicle Information
+                            </h1>
                         </div>
+                        <p className="text-green-100 text-sm md:text-base">
+                            Please review the vehicle information displayed below
+                        </p>
+                    </div>
 
-                        {/* Vehicle Information Card */}
-                        <div className="mb-6 p-6 bg-gray-50 border border-gray-200 rounded-lg">
-                            <h3 className="text-lg font-semibold text-gray-900 mb-4">Vehicle Details</h3>
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                <div>
-                                    <p className="text-sm text-gray-500">VIN</p>
-                                    <p className="text-base text-gray-900 font-medium">{state.vin}</p>
+                    {/* Card Content */}
+                    <div className="p-6 md:p-8 space-y-6">
+                        {/* Request ID Badge */}
+                        {/* <div className="inline-flex items-center gap-3 py-2.5">
+                            <Hash className="w-5 h-5 text-green-600" />
+                            <div>
+                                <span className="text-xs text-green-600 font-medium uppercase tracking-wide">Request ID</span>
+                                <p className="text-green-800 font-bold text-lg -mt-0.5">{state.requestId}</p>
+                            </div>
+                        </div> */}
+
+                        {/* Vehicle Details Card */}
+                        <div className="bg-white border border-gray-200 rounded overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                            <div className="flex items-center gap-3 px-5 py-4 border-b border-gray-200">
+                                <div className="p-2 bg-green-100 rounded-lg">
+                                    <Car className="w-5 h-5 text-green-600" />
                                 </div>
-                                <div>
-                                    <p className="text-sm text-gray-500">Make</p>
-                                    <p className="text-base text-gray-900 font-medium">{state.vehicleInfo.make}</p>
-                                </div>
-                                <div>
-                                    <p className="text-sm text-gray-500">Model</p>
-                                    <p className="text-base text-gray-900 font-medium">{state.vehicleInfo.model}</p>
-                                </div>
-                                <div>
-                                    <p className="text-sm text-gray-500">Year</p>
-                                    <p className="text-base text-gray-900 font-medium">{state.vehicleInfo.year}</p>
-                                </div>
-                                {state.vehicleInfo.color && (
-                                    <div>
-                                        <p className="text-sm text-gray-500">Color</p>
-                                        <p className="text-base text-gray-900 font-medium">{state.vehicleInfo.color}</p>
+                                <h3 className="text-lg font-semibold text-gray-800">Vehicle Details</h3>
+                            </div>
+                            <div className="p-5">
+                                <div className="grid grid-cols-2 lg:grid-cols-3 gap-3">
+                                    <div className="col-span-2 lg:col-span-3">
+                                        <InfoItem label="VIN" value={state.vin} />
                                     </div>
-                                )}
-                                {state.vehicleInfo.type && (
-                                    <div>
-                                        <p className="text-sm text-gray-500">Type</p>
-                                        <p className="text-base text-gray-900 font-medium">{state.vehicleInfo.type}</p>
-                                    </div>
-                                )}
+                                    <InfoItem label="Make" value={state.vehicleInfo.make} />
+                                    <InfoItem label="Model" value={state.vehicleInfo.model} />
+                                    <InfoItem label="Year" value={state.vehicleInfo.year} />
+                                    {state.vehicleInfo.color && (
+                                        <InfoItem label="Color" value={state.vehicleInfo.color} />
+                                    )}
+                                    {state.vehicleInfo.type && (
+                                        <InfoItem label="Type" value={state.vehicleInfo.type} />
+                                    )}
+                                </div>
                             </div>
                         </div>
 
                         {/* Confirmation Checkboxes */}
-                        <div className="border-2 border-[#B41662] rounded-lg p-6 space-y-4">
+                        <div className="space-y-3">
                             <CustomCheckbox
                                 checked={checkbox1}
                                 onChange={() => setCheckbox1(!checkbox1)}
@@ -131,20 +150,33 @@ export default function VinInformation() {
                                 label="I am the owner of this vehicle or the authorized representative of the owner"
                             />
                         </div>
-                    </div>
 
-                    {/* Continue Button */}
-                    <div className="mt-8">
-                        <button
-                            onClick={handleContinue}
-                            disabled={!checkbox1 || !checkbox2}
-                            className="w-full md:max-w-md py-3 px-6 bg-secondary text-white rounded-lg font-medium hover:bg-secondary/90 transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed"
-                        >
-                            Continue
-                        </button>
+                        {/* Continue Button */}
+                        <div className="pt-4 border-t border-gray-100">
+                            <button
+                                onClick={handleContinue}
+                                disabled={!bothChecked}
+                                className={`w-full sm:w-auto flex items-center justify-center gap-3 py-4 px-8 rounded font-semibold text-white transition-all duration-300 shadow-lg ${bothChecked
+                                        ? 'bg-green-600 hover:shadow-green-200 hover:-translate-y-0.5 active:translate-y-0'
+                                        : 'bg-gray-300 cursor-not-allowed shadow-none'
+                                    }`}
+                            >
+                                <span>Continue</span>
+                                {bothChecked && (
+                                    <svg className="w-5 h-5 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                                    </svg>
+                                )}
+                            </button>
+                        </div>
                     </div>
                 </div>
-            </section>
+
+                {/* Footer Note */}
+                <p className="text-center text-xs text-gray-400 mt-6">
+                    Please confirm both checkboxes to continue
+                </p>
+            </div>
         </main>
     )
 }

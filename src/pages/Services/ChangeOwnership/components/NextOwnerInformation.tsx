@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useNavigate, useLocation } from "react-router-dom"
-import { ArrowLeft } from "lucide-react"
+import { ArrowLeft, UserPlus, User, MapPin, Phone, Mail } from "lucide-react"
 import { useSubmitTransferMutation } from "../../../../services/transfersApi"
 
 interface LocationState {
@@ -72,7 +72,6 @@ export default function NextOwnerInformation() {
                 }
             }).unwrap()
 
-            // Navigate to review page on success
             navigate("/services/change-ownership/review-information", {
                 state: {
                     ...state,
@@ -99,117 +98,162 @@ export default function NextOwnerInformation() {
         }
     }
 
+    const isFormValid = formData.ownerName && formData.ownerAddress && formData.phone && formData.email
+
     return (
-        <main className="container mx-auto min-h-screen">
-            {/* Header */}
-            <div className="text-secondary py-6 px-4">
+        <main className="min-h-screen">
+            <div className="container mx-auto px-4 py-6">
+                {/* Header */}
                 <button
                     onClick={() => navigate(-1)}
-                    className=" flex items-center gap-2 hover:opacity-80 transition-opacity"
+                    className="group flex items-center gap-2 text-gray-600 hover:text-green-600 transition-colors mb-8"
                 >
-                    <ArrowLeft size={20} />
-                    <span className="text-base">Back</span>
+                    <div className="p-2 rounded-full bg-white shadow-sm group-hover:shadow-md group-hover:bg-green-50 transition-all">
+                        <ArrowLeft size={18} />
+                    </div>
+                    <span className="text-sm font-medium">Back</span>
                 </button>
-            </div>
 
-            {/* Form Section */}
-            <section className="bg-white p-6 md:p-8">
-                <form onSubmit={handleSubmit}>
-                    <div className="mb-8">
-                        {/* Step Header */}
-                        <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">
-                            New Owner Information
-                        </h2>
-
-                        <p className="text-gray-600 text-base mb-8">
-                            Please provide the information for the new vehicle owner
-                        </p>                        {/* Form Fields */}
-                        <div className="space-y-6">
-                            {/* Owner Name */}
-                            <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-2">
-                                    Owner Name <span className="text-red-500">*</span>
-                                </label>
-                                <input
-                                    type="text"
-                                    name="ownerName"
-                                    value={formData.ownerName}
-                                    onChange={handleChange}
-                                    className={`w-full border ${errors.ownerName ? 'border-red-500' : 'border-gray-300'} rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-secondary`}
-                                    placeholder="Enter new owner's full name"
-                                />
-                                {errors.ownerName && <p className="mt-1 text-sm text-red-600">{errors.ownerName}</p>}
+                {/* Main Card */}
+                <div className="bg-white rounded shadow-xl shadow-gray-200/50 overflow-hidden">
+                    {/* Card Header */}
+                    <div className="bg-green-600 px-6 py-8 md:px-8">
+                        <div className="flex items-center gap-3 mb-2">
+                            <div className="p-2 bg-white/20 rounded-lg">
+                                <UserPlus className="w-6 h-6 text-white" />
                             </div>
+                            <h1 className="text-2xl md:text-3xl font-bold text-white">
+                                New Owner Information
+                            </h1>
+                        </div>
+                        <p className="text-green-100 text-sm md:text-base">
+                            Please provide information of the person or entity that will own this vehicle
+                        </p>
+                    </div>
 
-                            {/* Owner Address */}
-                            <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-2">
-                                    Owner Address <span className="text-red-500">*</span>
-                                </label>
-                                <textarea
-                                    name="ownerAddress"
-                                    value={formData.ownerAddress}
-                                    onChange={handleChange}
-                                    rows={3}
-                                    className={`w-full border ${errors.ownerAddress ? 'border-red-500' : 'border-gray-300'} rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-secondary`}
-                                    placeholder="Enter new owner's address"
-                                />
-                                {errors.ownerAddress && <p className="mt-1 text-sm text-red-600">{errors.ownerAddress}</p>}
+                    {/* Card Content */}
+                    <form onSubmit={handleSubmit} className="p-6 md:p-8 space-y-6">
+                        {/* Form Fields Card */}
+                        <div className="bg-white border border-gray-200 rounded overflow-hidden shadow-sm">
+                            <div className="flex items-center gap-3 px-5 py-4 border-b border-gray-200">
+                                <div className="p-2 bg-[#B41662]/10 rounded-lg">
+                                    <User className="w-5 h-5 text-[#B41662]" />
+                                </div>
+                                <h3 className="text-lg font-semibold text-gray-800">Owner Details</h3>
                             </div>
+                            <div className="p-5 space-y-5">
+                                {/* Owner Name */}
+                                <div>
+                                    <label className="flex items-center gap-2 text-sm font-medium text-gray-700 mb-2">
+                                        <User className="w-4 h-4 text-gray-400" />
+                                        Full Name <span className="text-red-500">*</span>
+                                    </label>
+                                    <input
+                                        type="text"
+                                        name="ownerName"
+                                        value={formData.ownerName}
+                                        onChange={handleChange}
+                                        className={`w-full border-2 ${errors.ownerName ? 'border-red-400 bg-red-50' : 'border-gray-200 focus:border-green-500'} rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-green-200 transition-all`}
+                                        placeholder="Enter new owner's full name"
+                                    />
+                                    {errors.ownerName && <p className="mt-2 text-sm text-red-600 font-medium">{errors.ownerName}</p>}
+                                </div>
 
-                            {/* Phone */}
-                            <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-2">
-                                    Phone Number <span className="text-red-500">*</span>
-                                </label>
-                                <input
-                                    type="tel"
-                                    name="phone"
-                                    value={formData.phone}
-                                    onChange={handleChange}
-                                    className={`w-full border ${errors.phone ? 'border-red-500' : 'border-gray-300'} rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-secondary`}
-                                    placeholder="Enter phone number"
-                                />
-                                {errors.phone && <p className="mt-1 text-sm text-red-600">{errors.phone}</p>}
-                            </div>
+                                {/* Owner Address */}
+                                <div>
+                                    <label className="flex items-center gap-2 text-sm font-medium text-gray-700 mb-2">
+                                        <MapPin className="w-4 h-4 text-gray-400" />
+                                        Address <span className="text-red-500">*</span>
+                                    </label>
+                                    <textarea
+                                        name="ownerAddress"
+                                        value={formData.ownerAddress}
+                                        onChange={handleChange}
+                                        rows={3}
+                                        className={`w-full border-2 ${errors.ownerAddress ? 'border-red-400 bg-red-50' : 'border-gray-200 focus:border-green-500'} rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-green-200 transition-all resize-none`}
+                                        placeholder="Enter new owner's address"
+                                    />
+                                    {errors.ownerAddress && <p className="mt-2 text-sm text-red-600 font-medium">{errors.ownerAddress}</p>}
+                                </div>
 
-                            {/* Email */}
-                            <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-2">
-                                    Email Address <span className="text-red-500">*</span>
-                                </label>
-                                <input
-                                    type="email"
-                                    name="email"
-                                    value={formData.email}
-                                    onChange={handleChange}
-                                    className={`w-full border ${errors.email ? 'border-red-500' : 'border-gray-300'} rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-secondary`}
-                                    placeholder="Enter email address"
-                                />
-                                {errors.email && <p className="mt-1 text-sm text-red-600">{errors.email}</p>}
+                                {/* Phone and Email Row */}
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                                    {/* Phone */}
+                                    <div>
+                                        <label className="flex items-center gap-2 text-sm font-medium text-gray-700 mb-2">
+                                            <Phone className="w-4 h-4 text-gray-400" />
+                                            Phone Number <span className="text-red-500">*</span>
+                                        </label>
+                                        <input
+                                            type="tel"
+                                            name="phone"
+                                            value={formData.phone}
+                                            onChange={handleChange}
+                                            className={`w-full border-2 ${errors.phone ? 'border-red-400 bg-red-50' : 'border-gray-200 focus:border-green-500'} rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-green-200 transition-all`}
+                                            placeholder="Enter phone number"
+                                        />
+                                        {errors.phone && <p className="mt-2 text-sm text-red-600 font-medium">{errors.phone}</p>}
+                                    </div>
+
+                                    {/* Email */}
+                                    <div>
+                                        <label className="flex items-center gap-2 text-sm font-medium text-gray-700 mb-2">
+                                            <Mail className="w-4 h-4 text-gray-400" />
+                                            Email Address <span className="text-red-500">*</span>
+                                        </label>
+                                        <input
+                                            type="email"
+                                            name="email"
+                                            value={formData.email}
+                                            onChange={handleChange}
+                                            className={`w-full border-2 ${errors.email ? 'border-red-400 bg-red-50' : 'border-gray-200 focus:border-green-500'} rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-green-200 transition-all`}
+                                            placeholder="Enter email address"
+                                        />
+                                        {errors.email && <p className="mt-2 text-sm text-red-600 font-medium">{errors.email}</p>}
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
                         {/* API Error Display */}
                         {errors.api && (
-                            <div className="mt-6 p-4 bg-red-50 border border-red-200 rounded-lg">
-                                <p className="text-sm text-red-800">{errors.api}</p>
+                            <div className="flex items-start gap-3 p-4 bg-red-50 border border-red-200 rounded">
+                                <div className="p-1 bg-red-100 rounded-full mt-0.5">
+                                    <svg className="w-4 h-4 text-red-600" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
+                                    </svg>
+                                </div>
+                                <p className="text-sm text-red-700">{errors.api}</p>
                             </div>
                         )}
-                    </div>
 
-                    {/* Submit Button */}
-                    <div className="mt-8">
-                        <button
-                            type="submit"
-                            disabled={isLoading}
-                            className="w-full md:max-w-md py-3 px-6 bg-secondary text-white rounded-lg font-medium hover:bg-secondary/90 transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed"
-                        >
-                            {isLoading ? "Submitting..." : "Continue"}
-                        </button>
-                    </div>
-                </form>
-            </section>
+                        {/* Submit Button */}
+                        <div className="pt-4 border-t border-gray-100">
+                            <button
+                                type="submit"
+                                disabled={isLoading || !isFormValid}
+                                className={`w-full sm:w-auto flex items-center justify-center gap-3 py-4 px-8 rounded font-semibold text-white transition-all duration-300 shadow-lg ${isFormValid && !isLoading
+                                        ? 'bg-green-600 hover:shadow-green-200 hover:-translate-y-0.5 active:translate-y-0'
+                                        : 'bg-gray-300 cursor-not-allowed shadow-none'
+                                    }`}
+                            >
+                                <UserPlus className="w-5 h-5" />
+                                <span>{isLoading ? "Submitting..." : "Continue"}</span>
+                                {!isLoading && isFormValid && (
+                                    <svg className="w-5 h-5 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                                    </svg>
+                                )}
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                {/* Footer Note */}
+                <p className="text-center text-xs text-gray-400 mt-6">
+                    All fields marked with * are required
+                </p>
+            </div>
         </main>
     )
 }

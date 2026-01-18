@@ -29,7 +29,7 @@ export default function Hero() {
                 </p>
                 {/* CTA Button */}
                 <Link
-                    to={"/what-we-do"}
+                    to={"/services"}
                     className="bg-secondary hover:bg-secondary/90 text-white text-lg rounded-md shadow transition-colors p-3"
                 >
                     Explore Services

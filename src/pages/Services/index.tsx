@@ -1,58 +1,77 @@
-import { Car, Building2, Heart, Store, GraduationCap, Trees, HardHat, Calendar, Clock, ArrowRight, CheckCircle2 } from "lucide-react"
+import { Car, Building2, Heart, Store, GraduationCap, Clock, ArrowRight, CheckCircle2, Bus, ChefHat, FileText } from "lucide-react"
 import back from "@/assets/watermarked_preview.gif";
-
+import { Link } from "react-router-dom";
 
 const allServices = [
-    { name: "Motor Vehicle Registration", href: "/services/motor-vehicle-registration", available: true, category: "Vehicle & Transportation" },
-    { name: "Governor's Consent", href: "/services/governors-consent", available: false, category: "Property & Land" },
-    { name: "Building Plan Approval", href: "/services/building-plan-approval", available: false, category: "Property & Land" },
-    { name: "Occupancy Certificate", href: "/services/occupancy-certificate", available: false, category: "Property & Land" },
-    { name: "Environmental Permit", href: "/services/environmental-permit", available: false, category: "Environmental & Resources" },
-    { name: "Business License", href: "/services/business-license", available: false, category: "Business & Trade" },
-    { name: "Food Establishment Permit", href: "/services/food-establishment-permit", available: false, category: "Business & Trade" },
-    { name: "Fire Safety Certificate", href: "/services/fire-safety-certificate", available: false, category: "Health & Safety" },
-    { name: "Liquor License", href: "/services/liquor-license", available: false, category: "Business & Trade" },
-    { name: "Quarry Permit", href: "/services/quarry-permit", available: false, category: "Environmental & Resources" },
-    { name: "Road Excavation Permit", href: "/services/road-excavation-permit", available: false, category: "Infrastructure & Construction" },
-    { name: "Outdoor Advertising Permit", href: "/services/outdoor-advertising-permit", available: false, category: "Public Records & Events" },
-    { name: "Market Stall Permit", href: "/services/market-stall-permit", available: false, category: "Business & Trade" },
-    { name: "Motor-Park Operating Permit", href: "/services/motor-park-permit", available: false, category: "Vehicle & Transportation" },
-    { name: "Commercial Vehicle Permit", href: "/services/commercial-vehicle-permit", available: false, category: "Vehicle & Transportation" },
-    { name: "Health Facility Registration", href: "/services/health-facility-registration", available: false, category: "Health & Safety" },
-    { name: "Private Schools Registration", href: "/services/private-schools-registration", available: false, category: "Education" },
-    { name: "Pharmacy Registration", href: "/services/pharmacy-registration", available: false, category: "Health & Safety" },
-    { name: "Waste Collection Permit", href: "/services/waste-collection-permit", available: false, category: "Environmental & Resources" },
-    { name: "Street Trading Permit", href: "/services/street-trading-permit", available: false, category: "Business & Trade" },
-    { name: "Property Valuation Certificate", href: "/services/property-valuation-certificate", available: false, category: "Property & Land" },
-    { name: "Special Event Permit", href: "/services/special-event-permit", available: false, category: "Public Records & Events" },
-    { name: "Signage & Vendor Permit", href: "/services/signage-vendor-permit", available: false, category: "Public Records & Events" },
-    { name: "Industrial Permit", href: "/services/industrial-permit", available: false, category: "Infrastructure & Construction" },
-    { name: "Timber Permit", href: "/services/timber-permit", available: false, category: "Environmental & Resources" },
-    { name: "Stone-Crushing Plant Permit", href: "/services/stone-crushing-permit", available: false, category: "Environmental & Resources" },
-    { name: "Water Abstraction Permit", href: "/services/water-abstraction-permit", available: false, category: "Environmental & Resources" },
-    { name: "Utility Road-Cut Permit", href: "/services/utility-road-cut-permit", available: false, category: "Infrastructure & Construction" },
-    { name: "Quarry Rehabilitation Certificate", href: "/services/quarry-rehabilitation-certificate", available: false, category: "Environmental & Resources" },
-    { name: "Contractor Registration", href: "/services/contractor-registration", available: false, category: "Infrastructure & Construction" },
-    { name: "Burial Permit", href: "/services/burial-permit", available: false, category: "Public Records & Events" },
-    { name: "Vital Records Registration", href: "/services/vital-records-registration", available: false, category: "Public Records & Events" },
+    // Motor Vehicle Services
+    { name: "New Vehicle Registration", href: "/services/new-vehicle-registration/verify-vin", available: true, category: "Motor Vehicle Services" },
+    { name: "License Renewal", href: "/services/renewal-license", available: true, category: "Motor Vehicle Services" },
+    { name: "Change of Ownership", href: "/services/change-ownership/enter-cert-no", available: true, category: "Motor Vehicle Services" },
+    { name: "Certificate Migration", href: "/services/certificate-migration/enter-vin", available: true, category: "Motor Vehicle Services" },
+    { name: "Vehicle Valuation and VAT", href: "/services/vehicle-valuation", available: true, category: "Motor Vehicle Services" },
+
+    // Lands and Housing Permits
+    { name: "Governor's Consent", href: "/services/governors-consent", available: false, category: "Lands and Housing Permits" },
+    { name: "Building Plan Approval", href: "/services/building-plan-approval", available: false, category: "Lands and Housing Permits" },
+    { name: "Building Completion Certificate", href: "/services/building-completion-certificate", available: false, category: "Lands and Housing Permits" },
+    { name: "Right-of-Way (ROW) Excavation Permit", href: "/services/row-excavation-permit", available: false, category: "Lands and Housing Permits" },
+
+    // Commercial, Business and Trading Permits
+    { name: "Market Registration Permit", href: "/services/market-registration-permit", available: false, category: "Commercial, Business and Trading Permits" },
+    { name: "Market Stall Permit", href: "/services/market-stall-permit", available: false, category: "Commercial, Business and Trading Permits" },
+    { name: "Street Trading / Hawking Permit", href: "/services/street-trading-permit", available: false, category: "Commercial, Business and Trading Permits" },
+    { name: "Signage & Roadside Vendor Permit", href: "/services/signage-vendor-permit", available: false, category: "Commercial, Business and Trading Permits" },
+    { name: "Shops and Supermarket Permits", href: "/services/shops-supermarket-permits", available: false, category: "Commercial, Business and Trading Permits" },
+    { name: "Outdoor Advertising", href: "/services/outdoor-advertising", available: false, category: "Commercial, Business and Trading Permits" },
+
+    // Public Transportation Permits
+    { name: "Motor Parks License", href: "/services/motor-parks-license", available: false, category: "Public Transportation Permits" },
+    { name: "Passenger Vehicle Permit", href: "/services/passenger-vehicle-permit", available: false, category: "Public Transportation Permits" },
+
+    // Restaurants, Hotels and Bakeries
+    { name: "Restaurant Permits", href: "/services/restaurant-permits", available: false, category: "Restaurants, Hotels and Bakeries" },
+    { name: "Hotels License", href: "/services/hotels-license", available: false, category: "Restaurants, Hotels and Bakeries" },
+    { name: "Bakeries and Food Packaging", href: "/services/bakeries-food-packaging", available: false, category: "Restaurants, Hotels and Bakeries" },
+
+    // Registration of Births, Deaths and Marriages
+    { name: "Birth Certificate/Registration", href: "/services/birth-certificate", available: false, category: "Registration of Births, Deaths and Marriages" },
+    { name: "Death Certificate", href: "/services/death-certificate", available: false, category: "Registration of Births, Deaths and Marriages" },
+    { name: "Marriage License", href: "/services/marriage-license", available: false, category: "Registration of Births, Deaths and Marriages" },
+    { name: "Cemetery Permits", href: "/services/cemetery-permits", available: false, category: "Registration of Births, Deaths and Marriages" },
+
+    // Education - Private Schools Licenses
+    { name: "Creche", href: "/services/creche-license", available: false, category: "Education - Private Schools Licenses" },
+    { name: "Primary", href: "/services/primary-school-license", available: false, category: "Education - Private Schools Licenses" },
+    { name: "Secondary", href: "/services/secondary-school-license", available: false, category: "Education - Private Schools Licenses" },
+    { name: "Vocational", href: "/services/vocational-school-license", available: false, category: "Education - Private Schools Licenses" },
+
+    // Health - Health Facility Licenses
+    { name: "Pharmacy", href: "/services/pharmacy-license", available: false, category: "Health - Health Facility Licenses" },
+    { name: "Clinic/Hospital", href: "/services/clinic-hospital-license", available: false, category: "Health - Health Facility Licenses" },
+    { name: "Maternity Homes", href: "/services/maternity-homes-license", available: false, category: "Health - Health Facility Licenses" },
+    { name: "Medical", href: "/services/medical-license", available: false, category: "Health - Health Facility Licenses" },
 ]
 
 const categories = [
-    { name: "Vehicle & Transportation", icon: Car, color: "text-primary" },
-    { name: "Property & Land", icon: Building2, color: "text-secondary" },
-    { name: "Business & Trade", icon: Store, color: "text-accent" },
-    { name: "Environmental & Resources", icon: Trees, color: "text-primary" },
-    { name: "Health & Safety", icon: Heart, color: "text-secondary" },
-    { name: "Education", icon: GraduationCap, color: "text-primary" },
-    { name: "Infrastructure & Construction", icon: HardHat, color: "text-accent" },
-    { name: "Public Records & Events", icon: Calendar, color: "text-secondary" },
+    { url: 'motor-vehicle-registration', name: "Motor Vehicle Services", icon: Car, color: "text-primary" },
+    { url: '', name: "Lands and Housing Permits", icon: Building2, color: "text-secondary" },
+    { url: '', name: "Commercial, Business and Trading Permits", icon: Store, color: "text-accent" },
+    { url: '', name: "Public Transportation Permits", icon: Bus, color: "text-primary" },
+    { url: '', name: "Restaurants, Hotels and Bakeries", icon: ChefHat, color: "text-secondary" },
+    { url: '', name: "Registration of Births, Deaths and Marriages", icon: FileText, color: "text-accent" },
+    { url: '', name: "Education - Private Schools Licenses", icon: GraduationCap, color: "text-primary" },
+    { url: '', name: "Health - Health Facility Licenses", icon: Heart, color: "text-secondary" },
 ]
 
 export default function Services() {
+    const totalServices = allServices.length
+    const availableServices = allServices.filter(s => s.available).length
+    const comingSoonServices = totalServices - availableServices
+
     return (
-        <div className="min-h-screen bg-background">
+        <div className="min-h-screen">
             {/* Hero Section */}
-            <div className=" h-[50vh] py-16 px-4 relative">
+            <div className=" h-[50vh] py-16 px-4 relative bg-black/60 flex items-center">
                 <div className="container mx-auto">
                     <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
                         All Services
@@ -61,7 +80,6 @@ export default function Services() {
                         Browse all available government services. We're continuously expanding our digital offerings to serve you better.
                     </p>
                 </div>
-
 
                 <div className="absolute inset-0 -z-10">
                     <img
@@ -84,7 +102,7 @@ export default function Services() {
                                 <CheckCircle2 className="w-6 h-6 text-primary" />
                             </div>
                             <div>
-                                <div className="text-2xl font-bold text-gray-900">32</div>
+                                <div className="text-2xl font-bold text-gray-900">{totalServices}</div>
                                 <div className="text-sm text-gray-600">Total Services</div>
                             </div>
                         </div>
@@ -95,7 +113,7 @@ export default function Services() {
                                 <CheckCircle2 className="w-6 h-6 text-secondary" />
                             </div>
                             <div>
-                                <div className="text-2xl font-bold text-gray-900">1</div>
+                                <div className="text-2xl font-bold text-gray-900">{availableServices}</div>
                                 <div className="text-sm text-gray-600">Available Now</div>
                             </div>
                         </div>
@@ -106,7 +124,7 @@ export default function Services() {
                                 <Clock className="w-6 h-6 text-accent" />
                             </div>
                             <div>
-                                <div className="text-2xl font-bold text-gray-900">31</div>
+                                <div className="text-2xl font-bold text-gray-900">{comingSoonServices}</div>
                                 <div className="text-sm text-gray-600">Coming Soon</div>
                             </div>
                         </div>
@@ -126,8 +144,9 @@ export default function Services() {
                                 <div className={`w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center ${category.color}`}>
                                     <Icon className="w-5 h-5" />
                                 </div>
-                                <h2 className="text-2xl font-bold text-gray-900">{category.name}</h2>
+                                <Link to={category.url} className={`text-2xl font-bold text-gray-900 hover:underline ${category.url === "" ? "pointer-events-none" : ""}`}>{category.name}</Link>
                                 <span className="text-sm text-gray-500">({categoryServices.length} services)</span>
+                                {category.url === "" && (<span className="ml-2 px-2 py-1 text-xs bg-gray-200 text-gray-600 rounded-full">Coming Soon</span>)}
                             </div>
 
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">

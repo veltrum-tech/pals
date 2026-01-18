@@ -82,11 +82,12 @@ export const migrationsApi = createApi({
     }),
     verifyPayment: builder.mutation<
       VerifyPaymentResponse,
-      { requestId: string }
+      { requestId: string, reference: string }
     >({
-      query: ({ requestId }) => ({
+      query: ({ requestId, reference }) => ({
         url: `/migrations/${requestId}/verify-payment`,
         method: "POST",
+        body: { reference },
         headers: {
           "Content-Type": "application/json",
         },

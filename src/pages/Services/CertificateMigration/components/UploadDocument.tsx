@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useNavigate, useLocation } from "react-router-dom"
-import { ArrowLeft, Upload, FileText, X } from "lucide-react"
+import { ArrowLeft, Upload, FileText, X, Info, CloudUpload } from "lucide-react"
 import { useUploadCertificateMutation } from "../../../../services/migrationsApi"
 
 interface LocationState {
@@ -84,7 +84,6 @@ export default function UploadDocument() {
                 file: selectedFile
             }).unwrap()
 
-            // Navigate to next step on success
             navigate("/services/certificate-migration/information-summary", {
                 state: {
                     ...state,
@@ -98,115 +97,159 @@ export default function UploadDocument() {
     }
 
     return (
-        <main className="container mx-auto min-h-screen">
-            {/* Header */}
-            <div className="text-secondary py-6 px-4">
+        <main className="min-h-screen">
+            <div className="container mx-auto px-4 py-6">
+                {/* Header */}
                 <button
                     onClick={() => navigate(-1)}
-                    className=" flex items-center gap-2 hover:opacity-80 transition-opacity"
+                    className="group flex items-center gap-2 text-gray-600 hover:text-green-600 transition-colors mb-8"
                 >
-                    <ArrowLeft size={20} />
-                    <span className="text-base">Back</span>
+                    <div className="p-2 rounded-full bg-white shadow-sm group-hover:shadow-md group-hover:bg-green-50 transition-all">
+                        <ArrowLeft size={18} />
+                    </div>
+                    <span className="text-sm font-medium">Back</span>
                 </button>
-            </div>
 
-            {/* Form Section */}
-            <section className="bg-white p-6 md:p-8">
-                <form onSubmit={handleSubmit} className="flex flex-col min-h-[60vh] justify-between">
-                    <div>
-                        {/* Step Header */}
-                        <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">
-                            Upload Certificate Document
-                        </h2>
-
-                        <p className="text-gray-600 text-base mb-8">
-                            Please upload your existing vehicle certificate for migration
+                {/* Main Card */}
+                <div className="bg-white rounded shadow-xl shadow-gray-200/50 overflow-hidden">
+                    {/* Card Header */}
+                    <div className="bg-green-600 px-6 py-8 md:px-8">
+                        <div className="flex items-center gap-3 mb-2">
+                            <div className="p-2 bg-white/20 rounded-lg">
+                                <Upload className="w-6 h-6 text-white" />
+                            </div>
+                            <h1 className="text-xl font-bold text-white">
+                                Upload Ownership Certificate
+                            </h1>
+                        </div>
+                        <p className="text-green-100 text-sm md:text-base">
+                            Please upload your existing proof of ownership for security review and verification.
                         </p>
+                    </div>
 
-                        {/* File Upload Area */}
-                        <div
-                            onDrop={handleDrop}
-                            onDragOver={(e) => {
-                                e.preventDefault()
-                                setIsDragging(true)
-                            }}
-                            onDragLeave={() => setIsDragging(false)}
-                            className={`border-2 border-dashed ${isDragging ? 'border-secondary bg-secondary/5' :
-                                error ? 'border-red-300' : 'border-gray-300'
-                                } rounded-lg p-8 text-center transition-colors`}
-                        >
-                            <input
-                                type="file"
-                                id="file-upload"
-                                accept=".jpg,.jpeg,.png,.pdf"
-                                onChange={handleFileInput}
-                                className="hidden"
-                            />
-
-                            {!selectedFile ? (
-                                <>
-                                    <Upload className="mx-auto h-12 w-12 text-gray-400 mb-4" />
-                                    <label
-                                        htmlFor="file-upload"
-                                        className="cursor-pointer"
-                                    >
-                                        <span className="text-secondary font-medium hover:underline">
-                                            Click to upload
-                                        </span>
-                                        <span className="text-gray-600"> or drag and drop</span>
-                                    </label>
-                                    <p className="text-sm text-gray-500 mt-2">
-                                        JPG, PNG or PDF (Max 5MB)
-                                    </p>
-                                </>
-                            ) : (
-                                <div className="flex items-center justify-center gap-3">
-                                    <FileText className="h-8 w-8 text-secondary" />
-                                    <div className="text-left">
-                                        <p className="text-sm font-medium text-gray-900">{selectedFile.name}</p>
-                                        <p className="text-xs text-gray-500">
-                                            {(selectedFile.size / 1024 / 1024).toFixed(2)} MB
-                                        </p>
-                                    </div>
-                                    <button
-                                        type="button"
-                                        onClick={() => {
-                                            setSelectedFile(null)
-                                            setError("")
-                                        }}
-                                        className="ml-4 p-1 hover:bg-gray-100 rounded-full transition-colors"
-                                    >
-                                        <X className="h-5 w-5 text-gray-500" />
-                                    </button>
+                    {/* Card Content */}
+                    <form onSubmit={handleSubmit} className="p-6 md:p-8 space-y-6">
+                        {/* Upload Section */}
+                        <div className="bg-white border border-gray-200 rounded overflow-hidden shadow-sm">
+                            <div className="flex items-center gap-3 px-5 py-4 border-b border-gray-200">
+                                <div className="p-2 bg-[#B41662]/10 rounded-lg">
+                                    <CloudUpload className="w-5 h-5 text-[#B41662]" />
                                 </div>
-                            )}
+                                <h3 className="text-lg font-semibold text-gray-800">Document Upload</h3>
+                            </div>
+                            <div className="p-5">
+                                {/* File Upload Area */}
+                                <div
+                                    onDrop={handleDrop}
+                                    onDragOver={(e) => {
+                                        e.preventDefault()
+                                        setIsDragging(true)
+                                    }}
+                                    onDragLeave={() => setIsDragging(false)}
+                                    className={`border-2 border-dashed rounded-lg p-8 text-center transition-all duration-300 ${isDragging
+                                        ? 'border-green-500 bg-green-50 scale-[1.02]'
+                                        : selectedFile
+                                            ? 'border-green-400 bg-green-50/50'
+                                            : error
+                                                ? 'border-red-300 bg-red-50/30'
+                                                : 'border-gray-300 hover:border-green-400 hover:bg-gray-50'
+                                        }`}
+                                >
+                                    <input
+                                        type="file"
+                                        id="file-upload"
+                                        accept=".jpg,.jpeg,.png,.pdf"
+                                        onChange={handleFileInput}
+                                        className="hidden"
+                                    />
+
+                                    {!selectedFile ? (
+                                        <>
+                                            <div className="w-16 h-16 mx-auto mb-4 bg-gray-100 rounded-full flex items-center justify-center">
+                                                <Upload className="h-8 w-8 text-gray-400" />
+                                            </div>
+                                            <label
+                                                htmlFor="file-upload"
+                                                className="cursor-pointer"
+                                            >
+                                                <span className="text-green-600 font-semibold hover:underline">
+                                                    Click to upload
+                                                </span>
+                                                <span className="text-gray-600"> or drag and drop</span>
+                                            </label>
+                                            <p className="text-sm text-gray-500 mt-2">
+                                                JPG, PNG or PDF (Max 5MB)
+                                            </p>
+                                        </>
+                                    ) : (
+                                        <div className="flex items-center justify-center gap-4">
+                                            <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
+                                                <FileText className="h-6 w-6 text-green-600" />
+                                            </div>
+                                            <div className="text-left">
+                                                <p className="text-sm font-semibold text-gray-900">{selectedFile.name}</p>
+                                                <p className="text-xs text-gray-500">
+                                                    {(selectedFile.size / 1024 / 1024).toFixed(2)} MB
+                                                </p>
+                                            </div>
+                                            <button
+                                                type="button"
+                                                onClick={() => {
+                                                    setSelectedFile(null)
+                                                    setError("")
+                                                }}
+                                                className="ml-4 p-2 hover:bg-red-50 rounded-full transition-colors group"
+                                            >
+                                                <X className="h-5 w-5 text-gray-400 group-hover:text-red-500" />
+                                            </button>
+                                        </div>
+                                    )}
+                                </div>
+
+                                {error && (
+                                    <p className="mt-3 text-sm text-red-600 font-medium">{error}</p>
+                                )}
+                            </div>
                         </div>
 
-                        {error && (
-                            <p className="mt-2 text-sm text-red-600">{error}</p>
-                        )}
-
                         {/* Info Box */}
-                        <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
-                            <p className="text-sm text-blue-800">
+                        <div className="flex items-start gap-3 p-4 bg-blue-50 border border-blue-200 rounded">
+                            <div className="p-1.5 bg-blue-100 rounded-full mt-0.5">
+                                <Info className="w-4 h-4 text-blue-600" />
+                            </div>
+                            <p className="text-sm text-blue-700">
                                 <strong>Note:</strong> Please ensure the document is clear and legible.
                                 Accepted formats are JPG, PNG, or PDF with a maximum file size of 5MB.
                             </p>
                         </div>
-                    </div>
 
-                    {/* Submit Button */}
-                    <div className="mt-8">
-                        <button
-                            type="submit"
-                            disabled={!selectedFile || isLoading}
-                            className="w-full md:max-w-md py-3 px-6 bg-secondary text-white rounded-lg font-medium hover:bg-secondary/90 transition-colors disabled:bg-gray-400 disabled:cursor-not-allowed"
-                        >
-                            {isLoading ? "Uploading..." : "Continue"}
-                        </button>
-                    </div>
-                </form>
-            </section>
+                        {/* Submit Button */}
+                        <div className="pt-4 border-t border-gray-100">
+                            <button
+                                type="submit"
+                                disabled={!selectedFile || isLoading}
+                                className={`w-full sm:w-auto flex items-center justify-center gap-3 py-4 px-8 rounded font-semibold text-white transition-all duration-300 shadow-lg ${selectedFile && !isLoading
+                                    ? 'bg-green-600 hover:shadow-green-200 hover:-translate-y-0.5 active:translate-y-0'
+                                    : 'bg-gray-300 cursor-not-allowed shadow-none'
+                                    }`}
+                            >
+                                <Upload className="w-5 h-5" />
+                                <span>{isLoading ? "Uploading..." : "Continue"}</span>
+                                {!isLoading && selectedFile && (
+                                    <svg className="w-5 h-5 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                                    </svg>
+                                )}
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                {/* Footer Note */}
+                <p className="text-center text-xs text-gray-400 mt-6">
+                    Your document will be securely processed
+                </p>
+            </div>
         </main>
     )
 }

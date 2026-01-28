@@ -31,6 +31,11 @@ import PaymentCallback from "@/pages/Payment/PaymentCallback";
 import PaymentRedirect from "@/pages/Payment/PaymentRedirect";
 import ComingSoon from "@/pages/ComingSoon";
 import NotFound from "@/pages/NotFound";
+import { LoginForm } from "@/components/auth/LoginForm";
+import { MagicLinkVerification } from "@/components/auth/MagicLinkVerification";
+import { ProtectedRoute } from "@/components/auth/ProtectedRoute";
+import { TenantDashboard } from "@/components/tenant/TenantDashboard";
+import { AdminLayout } from "@/components/layout/AdminLayout";
 
 const routes = createBrowserRouter([
     {
@@ -99,7 +104,7 @@ const routes = createBrowserRouter([
                         element: <UploadDocuments />,
                     },
                     {
-                        path: "review-payment",
+                        path: "review",
                         element: <ReviewPayment />,
                     },
                 ],
@@ -192,8 +197,40 @@ const routes = createBrowserRouter([
                 path: "*",
                 element: <NotFound />,
             },
+           
         ]
-    }
+    },
+     {
+                path: "admin",
+                children: [
+                    {
+                        index: true,
+                        element: <Navigate to={"/admin/login"} />,
+                    },
+                    {
+                        path: "login",
+                        element: <LoginForm />
+                    },
+                    {
+                        path: "magic-link",
+                        element: <MagicLinkVerification />
+                    },
+                    {
+                        path: "dashboard",
+                        element: (
+                            <ProtectedRoute>
+                               <AdminLayout />
+                            </ProtectedRoute>
+                        ),
+                        children: [
+                            {
+                                index: true,
+                                element: <TenantDashboard />
+                            }
+                        ]
+                    }
+                ]
+            }
 ])
 
 export default routes;

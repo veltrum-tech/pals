@@ -21,22 +21,29 @@ interface DocumentType {
 
 const REQUIRED_DOCUMENTS: DocumentType[] = [
     {
-        id: "ownership",
-        name: "Proof of Ownership",
-        description: "Original ownership document",
+        id: "customs-duty",
+        name: "Copy of Customs Duty Payment or Exemption",
+        description: "Proof of customs duty payment or exemption certificate",
         uploaded: false,
         file: null
     },
     {
-        id: "inspection",
-        name: "Vehicle Inspection Report",
-        description: "Recent vehicle inspection",
+        id: "bill-of-landing",
+        name: "Bill of Landing / Airway Bill/ Commercial Invoice",
+        description: "Recent vehicle inspection report from an authorized inspection center",
         uploaded: false,
         file: null
     },
     {
-        id: "identification",
-        name: "Valid Identification",
+        id: "bill-of-sale",
+        name: "Bill of Sale / Purchase Invoice",
+        description: "Proof of vehicle ownership transfer",
+        uploaded: false,
+        file: null
+    },
+    {
+        id: "inspection-report",
+        name: "Snapshot of Vehicle Specification sticker (From driver doorside)",
         description: "National ID, Driver's License, or Passport",
         uploaded: false,
         file: null
@@ -392,7 +399,7 @@ export default function UploadDocuments() {
                                         : 'bg-gray-300 cursor-not-allowed shadow-none'
                                     }`}
                             >
-                                <span>Review & Pay</span>
+                                <span>Review</span>
                                 {allDocumentsUploaded && (
                                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />

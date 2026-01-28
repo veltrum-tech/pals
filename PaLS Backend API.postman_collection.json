@@ -1,0 +1,3305 @@
+{
+  "info": {
+    "_postman_id": "c0b393cd-b411-4af5-9244-2f7ee4a4f17f",
+    "name": "PaLS Backend API",
+    "description": "The PaLS Backend API description",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "48679749",
+    "_collection_link": "https://go.postman.co/collection/24900163-c0b393cd-b411-4af5-9244-2f7ee4a4f17f?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "/",
+      "item": [
+        {
+          "name": "Health check",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ""
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Service is running.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "body": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "admin",
+      "item": [
+        {
+          "name": "tenants",
+          "item": [
+            {
+              "name": "{id}",
+              "item": [
+                {
+                  "name": "Update a Tenant",
+                  "request": {
+                    "method": "PATCH",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/admin/tenants/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "admin",
+                        "tenants",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id",
+                          "value": "string"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "Untitled Response",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/admin/tenants/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "admin",
+                            "tenants",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id",
+                              "value": "string"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "body": ""
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Create a new Tenant",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/admin/tenants",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "admin",
+                    "tenants"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "Untitled Response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/admin/tenants",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "admin",
+                        "tenants"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "body": ""
+                }
+              ]
+            },
+            {
+              "name": "List all Tenants",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/admin/tenants",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "admin",
+                    "tenants"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "Untitled Response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/admin/tenants",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "admin",
+                        "tenants"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "body": ""
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "stats",
+          "item": [
+            {
+              "name": "Get Platform Stats",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/admin/stats",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "admin",
+                    "stats"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "Untitled Response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/admin/stats",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "admin",
+                        "stats"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "body": ""
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "tenant",
+      "item": [
+        {
+          "name": "stats",
+          "item": [
+            {
+              "name": "Get Tenant Dashboard Stats",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/tenant/stats",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "tenant",
+                    "stats"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "Untitled Response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/tenant/stats",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "tenant",
+                        "stats"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "body": ""
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "settings",
+          "item": [
+            {
+              "name": "Get Tenant Settings",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/tenant/settings",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "tenant",
+                    "settings"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "Untitled Response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/tenant/settings",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "tenant",
+                        "settings"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "body": ""
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "users",
+      "item": [
+        {
+          "name": "me",
+          "item": [
+            {
+              "name": "Get current user profile",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/users/me",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "users",
+                    "me"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "Untitled Response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/users/me",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        "me"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "body": ""
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Create a new User",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"user@tenant.com\",\n  \"name\": \"John Doe\",\n  \"password\": \"secretPassword\",\n  \"role\": \"USER\",\n  \"tenantId\": \"uuid-of-tenant\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/users",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "users"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Untitled Response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"user@tenant.com\",\n  \"name\": \"John Doe\",\n  \"password\": \"secretPassword\",\n  \"role\": \"USER\",\n  \"tenantId\": \"uuid-of-tenant\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/users",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "users"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "body": ""
+            }
+          ]
+        },
+        {
+          "name": "List users (Tenant Scoped)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/users",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "users"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Untitled Response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/users",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "users"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "body": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "auth",
+      "item": [
+        {
+          "name": "login",
+          "item": [
+            {
+              "name": "Login with Email/Password",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"admin@pals.com\",\n  \"password\": \"password123\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/auth/login",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "auth",
+                    "login"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "Return JWT access token",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"email\": \"admin@pals.com\",\n  \"password\": \"password123\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/auth/login",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "auth",
+                        "login"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "body": ""
+                },
+                {
+                  "name": "Invalid credentials",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"email\": \"admin@pals.com\",\n  \"password\": \"password123\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/auth/login",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "auth",
+                        "login"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "body": ""
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "magic-link",
+          "item": [
+            {
+              "name": "Request Magic Link",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"email\": \"user@example.com\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/auth/magic-link",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "auth",
+                    "magic-link"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "Magic link sent (if email exists)",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"email\": \"user@example.com\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/auth/magic-link",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "auth",
+                        "magic-link"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "body": ""
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "verify",
+          "item": [
+            {
+              "name": "Verify Magic Link",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/auth/verify?email=string&token=string",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "auth",
+                    "verify"
+                  ],
+                  "query": [
+                    {
+                      "key": "email",
+                      "value": "string"
+                    },
+                    {
+                      "key": "token",
+                      "value": "string"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "Return JWT access token",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/auth/verify?email=string&token=string",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "auth",
+                        "verify"
+                      ],
+                      "query": [
+                        {
+                          "key": "email",
+                          "value": "string"
+                        },
+                        {
+                          "key": "token",
+                          "value": "string"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "body": ""
+                },
+                {
+                  "name": "Invalid or expired token",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/auth/verify?email=string&token=string",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "auth",
+                        "verify"
+                      ],
+                      "query": [
+                        {
+                          "key": "email",
+                          "value": "string"
+                        },
+                        {
+                          "key": "token",
+                          "value": "string"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "body": ""
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "migrations",
+      "item": [
+        {
+          "name": "verify-vin",
+          "item": [
+            {
+              "name": "Verify a Vehicle Identification Number (VIN)",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "X-Tenant-ID",
+                    "value": "string",
+                    "description": "Tenant ID (e.g., jigawa)"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"vin\": \"1HGCM82633A004352\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/migrations/verify-vin",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "migrations",
+                    "verify-vin"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "VIN verified successfully.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "description": "Tenant ID (e.g., jigawa)",
+                        "key": "X-Tenant-ID",
+                        "value": "string"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"vin\": \"1HGCM82633A004352\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/migrations/verify-vin",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "migrations",
+                        "verify-vin"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "body": ""
+                },
+                {
+                  "name": "Invalid VIN.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "description": "Tenant ID (e.g., jigawa)",
+                        "key": "X-Tenant-ID",
+                        "value": "string"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"vin\": \"1HGCM82633A004352\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/migrations/verify-vin",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "migrations",
+                        "verify-vin"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "body": ""
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "{requestId}",
+          "item": [
+            {
+              "name": "submit-info",
+              "item": [
+                {
+                  "name": "Submit migration information",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "X-Tenant-ID",
+                        "value": "string",
+                        "description": "Tenant ID (e.g., jigawa)"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"state\": \"Lagos\",\n  \"lga_id\": \"123\",\n  \"certificate_number\": \"CERT-12345\",\n  \"issue_date\": \"2023-01-01\",\n  \"plate_number\": \"ABC-123-DE\",\n  \"purpose\": \"Relocation\",\n  \"owner_name\": \"John Doe\",\n  \"owner_address\": \"123 Main St, Lagos\",\n  \"engine_number\": \"ENG-123456789\",\n  \"title\": \"Mr\",\n  \"telephone\": \"08012345678\",\n  \"email\": \"john.doe@example.com\",\n  \"vehicle_color\": \"Blue\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/migrations/:requestId/submit-info",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "migrations",
+                        ":requestId",
+                        "submit-info"
+                      ],
+                      "variable": [
+                        {
+                          "key": "requestId",
+                          "value": "string"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "Information submitted successfully.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "Tenant ID (e.g., jigawa)",
+                            "key": "X-Tenant-ID",
+                            "value": "string"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"state\": \"Lagos\",\n  \"lga_id\": \"123\",\n  \"certificate_number\": \"CERT-12345\",\n  \"issue_date\": \"2023-01-01\",\n  \"plate_number\": \"ABC-123-DE\",\n  \"purpose\": \"Relocation\",\n  \"owner_name\": \"John Doe\",\n  \"owner_address\": \"123 Main St, Lagos\",\n  \"engine_number\": \"ENG-123456789\",\n  \"title\": \"Mr\",\n  \"telephone\": \"08012345678\",\n  \"email\": \"john.doe@example.com\",\n  \"vehicle_color\": \"Blue\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/migrations/:requestId/submit-info",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "migrations",
+                            ":requestId",
+                            "submit-info"
+                          ],
+                          "variable": [
+                            {
+                              "key": "requestId",
+                              "value": "string"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "body": ""
+                    },
+                    {
+                      "name": "Bad Request. Tenant connection not available or invalid input.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "Tenant ID (e.g., jigawa)",
+                            "key": "X-Tenant-ID",
+                            "value": "string"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"state\": \"Lagos\",\n  \"lga_id\": \"123\",\n  \"certificate_number\": \"CERT-12345\",\n  \"issue_date\": \"2023-01-01\",\n  \"plate_number\": \"ABC-123-DE\",\n  \"purpose\": \"Relocation\",\n  \"owner_name\": \"John Doe\",\n  \"owner_address\": \"123 Main St, Lagos\",\n  \"engine_number\": \"ENG-123456789\",\n  \"title\": \"Mr\",\n  \"telephone\": \"08012345678\",\n  \"email\": \"john.doe@example.com\",\n  \"vehicle_color\": \"Blue\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/migrations/:requestId/submit-info",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "migrations",
+                            ":requestId",
+                            "submit-info"
+                          ],
+                          "variable": [
+                            {
+                              "key": "requestId",
+                              "value": "string"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "{\n  \"message\": \"Tenant connection not available\",\n  \"error\": \"Bad Request\",\n  \"statusCode\": 400\n}"
+                    },
+                    {
+                      "name": "Request not found.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "Tenant ID (e.g., jigawa)",
+                            "key": "X-Tenant-ID",
+                            "value": "string"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"state\": \"Lagos\",\n  \"lga_id\": \"123\",\n  \"certificate_number\": \"CERT-12345\",\n  \"issue_date\": \"2023-01-01\",\n  \"plate_number\": \"ABC-123-DE\",\n  \"purpose\": \"Relocation\",\n  \"owner_name\": \"John Doe\",\n  \"owner_address\": \"123 Main St, Lagos\",\n  \"engine_number\": \"ENG-123456789\",\n  \"title\": \"Mr\",\n  \"telephone\": \"08012345678\",\n  \"email\": \"john.doe@example.com\",\n  \"vehicle_color\": \"Blue\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/migrations/:requestId/submit-info",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "migrations",
+                            ":requestId",
+                            "submit-info"
+                          ],
+                          "variable": [
+                            {
+                              "key": "requestId",
+                              "value": "string"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "body": ""
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "upload-certificate",
+              "item": [
+                {
+                  "name": "Upload vehicle certificate",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "X-Tenant-ID",
+                        "value": "string",
+                        "description": "Tenant ID (e.g., jigawa)"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "multipart/form-data"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "key": "certificate",
+                          "type": "file",
+                          "value": null
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/migrations/:requestId/upload-certificate",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "migrations",
+                        ":requestId",
+                        "upload-certificate"
+                      ],
+                      "variable": [
+                        {
+                          "key": "requestId",
+                          "value": "string"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "Certificate uploaded successfully.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "Tenant ID (e.g., jigawa)",
+                            "key": "X-Tenant-ID",
+                            "value": "string"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "multipart/form-data"
+                          }
+                        ],
+                        "body": {
+                          "mode": "formdata",
+                          "formdata": [
+                            {
+                              "key": "certificate",
+                              "type": "file",
+                              "src": []
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/migrations/:requestId/upload-certificate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "migrations",
+                            ":requestId",
+                            "upload-certificate"
+                          ],
+                          "variable": [
+                            {
+                              "key": "requestId",
+                              "value": "string"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "body": ""
+                    },
+                    {
+                      "name": "File upload failed.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "Tenant ID (e.g., jigawa)",
+                            "key": "X-Tenant-ID",
+                            "value": "string"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "multipart/form-data"
+                          }
+                        ],
+                        "body": {
+                          "mode": "formdata",
+                          "formdata": [
+                            {
+                              "key": "certificate",
+                              "type": "file",
+                              "src": []
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/migrations/:requestId/upload-certificate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "migrations",
+                            ":requestId",
+                            "upload-certificate"
+                          ],
+                          "variable": [
+                            {
+                              "key": "requestId",
+                              "value": "string"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "body": ""
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "initiate-payment",
+              "item": [
+                {
+                  "name": "Initiate payment for migration",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "X-Tenant-ID",
+                        "value": "string",
+                        "description": "Tenant ID (e.g., jigawa)"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"amount\": 10000\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/migrations/:requestId/initiate-payment",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "migrations",
+                        ":requestId",
+                        "initiate-payment"
+                      ],
+                      "variable": [
+                        {
+                          "key": "requestId",
+                          "value": "string"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "Payment initiated successfully.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "Tenant ID (e.g., jigawa)",
+                            "key": "X-Tenant-ID",
+                            "value": "string"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"amount\": 10000\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/migrations/:requestId/initiate-payment",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "migrations",
+                            ":requestId",
+                            "initiate-payment"
+                          ],
+                          "variable": [
+                            {
+                              "key": "requestId",
+                              "value": "string"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "body": ""
+                    },
+                    {
+                      "name": "Payment initiation failed.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "Tenant ID (e.g., jigawa)",
+                            "key": "X-Tenant-ID",
+                            "value": "string"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"amount\": 10000\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/migrations/:requestId/initiate-payment",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "migrations",
+                            ":requestId",
+                            "initiate-payment"
+                          ],
+                          "variable": [
+                            {
+                              "key": "requestId",
+                              "value": "string"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "body": ""
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "verify-payment",
+              "item": [
+                {
+                  "name": "Verify payment status",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "X-Tenant-ID",
+                        "value": "string",
+                        "description": "Tenant ID (e.g., jigawa)"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/migrations/:requestId/verify-payment",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "migrations",
+                        ":requestId",
+                        "verify-payment"
+                      ],
+                      "variable": [
+                        {
+                          "key": "requestId",
+                          "value": "string"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "Payment verified successfully.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "Tenant ID (e.g., jigawa)",
+                            "key": "X-Tenant-ID",
+                            "value": "string"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/migrations/:requestId/verify-payment",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "migrations",
+                            ":requestId",
+                            "verify-payment"
+                          ],
+                          "variable": [
+                            {
+                              "key": "requestId",
+                              "value": "string"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "body": ""
+                    },
+                    {
+                      "name": "Payment verification failed.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "Tenant ID (e.g., jigawa)",
+                            "key": "X-Tenant-ID",
+                            "value": "string"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/migrations/:requestId/verify-payment",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "migrations",
+                            ":requestId",
+                            "verify-payment"
+                          ],
+                          "variable": [
+                            {
+                              "key": "requestId",
+                              "value": "string"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "body": ""
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "registrations",
+      "item": [
+        {
+          "name": "verify-vin",
+          "item": [
+            {
+              "name": "Global VIN Check for new registration",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "X-Tenant-ID",
+                    "value": "string",
+                    "description": "Tenant ID (e.g., jigawa)"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"vin\": \"1HGCM82633A004352\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/registrations/verify-vin",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "registrations",
+                    "verify-vin"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "VIN Checked.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "description": "Tenant ID (e.g., jigawa)",
+                        "key": "X-Tenant-ID",
+                        "value": "string"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"vin\": \"1HGCM82633A004352\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/registrations/verify-vin",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "registrations",
+                        "verify-vin"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "body": ""
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "{requestId}",
+          "item": [
+            {
+              "name": "documents",
+              "item": [
+                {
+                  "name": "Upload registration documents",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "X-Tenant-ID",
+                        "value": "string",
+                        "description": "Tenant ID (e.g., jigawa)"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "multipart/form-data"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "key": "file",
+                          "value": "string,string",
+                          "type": "text"
+                        },
+                        {
+                          "key": "documentType",
+                          "value": "proof_of_ownership,proof_of_ownership",
+                          "type": "text"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/registrations/:requestId/documents",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "registrations",
+                        ":requestId",
+                        "documents"
+                      ],
+                      "variable": [
+                        {
+                          "key": "requestId",
+                          "value": "string"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "Untitled Response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "Tenant ID (e.g., jigawa)",
+                            "key": "X-Tenant-ID",
+                            "value": "string"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "multipart/form-data"
+                          }
+                        ],
+                        "body": {
+                          "mode": "formdata",
+                          "formdata": [
+                            {
+                              "key": "file",
+                              "value": "string,string",
+                              "type": "text"
+                            },
+                            {
+                              "key": "documentType",
+                              "value": "proof_of_ownership,proof_of_ownership",
+                              "type": "text"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/registrations/:requestId/documents",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "registrations",
+                            ":requestId",
+                            "documents"
+                          ],
+                          "variable": [
+                            {
+                              "key": "requestId",
+                              "value": "string"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "body": ""
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "payment",
+              "item": [
+                {
+                  "name": "Initiate payment",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "X-Tenant-ID",
+                        "value": "string",
+                        "description": "Tenant ID (e.g., jigawa)"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/registrations/:requestId/payment",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "registrations",
+                        ":requestId",
+                        "payment"
+                      ],
+                      "variable": [
+                        {
+                          "key": "requestId",
+                          "value": "string"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "Payment initiated.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "Tenant ID (e.g., jigawa)",
+                            "key": "X-Tenant-ID",
+                            "value": "string"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/registrations/:requestId/payment",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "registrations",
+                            ":requestId",
+                            "payment"
+                          ],
+                          "variable": [
+                            {
+                              "key": "requestId",
+                              "value": "string"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "body": ""
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "verify-payment",
+              "item": [
+                {
+                  "name": "Verify payment (Manual Trigger)",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "X-Tenant-ID",
+                        "value": "string",
+                        "description": "Tenant ID (e.g., jigawa)"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"reference\": \"ref_123456789\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/registrations/:requestId/verify-payment",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "registrations",
+                        ":requestId",
+                        "verify-payment"
+                      ],
+                      "variable": [
+                        {
+                          "key": "requestId",
+                          "value": "string"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "Payment verified.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "Tenant ID (e.g., jigawa)",
+                            "key": "X-Tenant-ID",
+                            "value": "string"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"reference\": \"ref_123456789\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/registrations/:requestId/verify-payment",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "registrations",
+                            ":requestId",
+                            "verify-payment"
+                          ],
+                          "variable": [
+                            {
+                              "key": "requestId",
+                              "value": "string"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "body": ""
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "review",
+              "item": [
+                {
+                  "name": "Admin Review (Approve/Reject)",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "X-Tenant-ID",
+                        "value": "string",
+                        "description": "Tenant ID (e.g., jigawa)"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"action\": \"approve\",\n  \"rejectionReason\": \"string\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/registrations/:requestId/review",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "registrations",
+                        ":requestId",
+                        "review"
+                      ],
+                      "variable": [
+                        {
+                          "key": "requestId",
+                          "value": "string"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "Review submitted.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "Tenant ID (e.g., jigawa)",
+                            "key": "X-Tenant-ID",
+                            "value": "string"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"action\": \"approve\",\n  \"rejectionReason\": \"string\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/registrations/:requestId/review",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "registrations",
+                            ":requestId",
+                            "review"
+                          ],
+                          "variable": [
+                            {
+                              "key": "requestId",
+                              "value": "string"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "body": ""
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Create a new Vehicle Registration Request",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-Tenant-ID",
+                "value": "string",
+                "description": "Tenant ID (e.g., jigawa)"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"vin\": \"string\",\n  \"ownerName\": \"string\",\n  \"ownerPhone\": \"string\",\n  \"ownerEmail\": \"string\",\n  \"ownerAddress\": \"string\",\n  \"vehicleMake\": \"string\",\n  \"vehicleModel\": \"string\",\n  \"vehicleYear\": 8582.86297279694,\n  \"vehicleColor\": \"string\",\n  \"ownerNin\": \"string\",\n  \"engineNumber\": \"string\",\n  \"chassisNumber\": \"string\",\n  \"vehicleType\": \"string\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/registrations",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "registrations"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Request created.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "Tenant ID (e.g., jigawa)",
+                    "key": "X-Tenant-ID",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"vin\": \"string\",\n  \"ownerName\": \"string\",\n  \"ownerPhone\": \"string\",\n  \"ownerEmail\": \"string\",\n  \"ownerAddress\": \"string\",\n  \"vehicleMake\": \"string\",\n  \"vehicleModel\": \"string\",\n  \"vehicleYear\": 8582.86297279694,\n  \"vehicleColor\": \"string\",\n  \"ownerNin\": \"string\",\n  \"engineNumber\": \"string\",\n  \"chassisNumber\": \"string\",\n  \"vehicleType\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/registrations",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "registrations"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "body": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "transfers",
+      "item": [
+        {
+          "name": "verify-certificate",
+          "item": [
+            {
+              "name": "Verify a certificate",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "X-Tenant-ID",
+                    "value": "string",
+                    "description": "Tenant ID (e.g., jigawa)"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"certificate_number\": \"LA-2025-000008\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/transfers/verify-certificate",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "transfers",
+                    "verify-certificate"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "Certificate verified successfully.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "description": "Tenant ID (e.g., jigawa)",
+                        "key": "X-Tenant-ID",
+                        "value": "string"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"certificate_number\": \"CERT-2023-12345\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/transfers/verify-certificate",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "transfers",
+                        "verify-certificate"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n  \"success\": true,\n  \"requestId\": \"a24858fc-c544-419e-b528-384665b3fa79\",\n  \"vehicleInfo\": {\n    \"success\": true,\n    \"requestId\": \"9f9df5ac-901c-446a-b9ec-85c7a7c3613f\",\n    \"currentOwner\": {\n      \"name\": \"Peace Effiong\",\n      \"phone\": \"2348040000000\",\n      \"email\": \"see@go.ai\"\n    },\n    \"vehicleInfo\": {\n      \"make\": \"NISSAN\",\n      \"model\": \"Quest\",\n      \"year\": 1997,\n      \"color\": \"Green\",\n      \"plate_number\": \"LND778DR\"\n    }\n  }\n}"
+                },
+                {
+                  "name": "Invalid certificate.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "description": "Tenant ID (e.g., jigawa)",
+                        "key": "X-Tenant-ID",
+                        "value": "string"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"certificate_number\": \"CERT-2023-12345\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/transfers/verify-certificate",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "transfers",
+                        "verify-certificate"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "body": ""
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "{requestId}",
+          "item": [
+            {
+              "name": "send-otp",
+              "item": [
+                {
+                  "name": "Send OTP for transfer request",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "X-Tenant-ID",
+                        "value": "string",
+                        "description": "Tenant ID (e.g., jigawa)"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"method\": \"sms\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/transfers/:requestId/send-otp",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "transfers",
+                        ":requestId",
+                        "send-otp"
+                      ],
+                      "variable": [
+                        {
+                          "key": "requestId",
+                          "value": "string"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "OTP sent successfully.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "Tenant ID (e.g., jigawa)",
+                            "key": "X-Tenant-ID",
+                            "value": "string"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"method\": \"sms\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/transfers/:requestId/send-otp",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "transfers",
+                            ":requestId",
+                            "send-otp"
+                          ],
+                          "variable": [
+                            {
+                              "key": "requestId",
+                              "value": "string"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "{\n  \"success\": true,\n  \"message\": \"OTP sent successfully\"\n}"
+                    },
+                    {
+                      "name": "Bad Request. Tenant connection not available or invalid input.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "Tenant ID (e.g., jigawa)",
+                            "key": "X-Tenant-ID",
+                            "value": "string"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"method\": \"sms\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/transfers/:requestId/send-otp",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "transfers",
+                            ":requestId",
+                            "send-otp"
+                          ],
+                          "variable": [
+                            {
+                              "key": "requestId",
+                              "value": "string"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "{\n  \"message\": \"Tenant connection not available\",\n  \"error\": \"Bad Request\",\n  \"statusCode\": 400\n}"
+                    },
+                    {
+                      "name": "Request not found.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "Tenant ID (e.g., jigawa)",
+                            "key": "X-Tenant-ID",
+                            "value": "string"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"method\": \"sms\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/transfers/:requestId/send-otp",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "transfers",
+                            ":requestId",
+                            "send-otp"
+                          ],
+                          "variable": [
+                            {
+                              "key": "requestId",
+                              "value": "string"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "body": ""
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "verify-otp",
+              "item": [
+                {
+                  "name": "Verify OTP for transfer request",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "X-Tenant-ID",
+                        "value": "string",
+                        "description": "Tenant ID (e.g., jigawa)"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"otp\": \"123456\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/transfers/:requestId/verify-otp",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "transfers",
+                        ":requestId",
+                        "verify-otp"
+                      ],
+                      "variable": [
+                        {
+                          "key": "requestId",
+                          "value": "string"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "OTP verified successfully.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "Tenant ID (e.g., jigawa)",
+                            "key": "X-Tenant-ID",
+                            "value": "string"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"otp\": \"123456\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/transfers/:requestId/verify-otp",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "transfers",
+                            ":requestId",
+                            "verify-otp"
+                          ],
+                          "variable": [
+                            {
+                              "key": "requestId",
+                              "value": "string"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "{\n  \"success\": true,\n  \"message\": \"OTP verified successfully\"\n}"
+                    },
+                    {
+                      "name": "Invalid OTP.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "Tenant ID (e.g., jigawa)",
+                            "key": "X-Tenant-ID",
+                            "value": "string"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"otp\": \"123456\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/transfers/:requestId/verify-otp",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "transfers",
+                            ":requestId",
+                            "verify-otp"
+                          ],
+                          "variable": [
+                            {
+                              "key": "requestId",
+                              "value": "string"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "body": ""
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "submit",
+              "item": [
+                {
+                  "name": "Submit transfer details",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "X-Tenant-ID",
+                        "value": "string",
+                        "description": "Tenant ID (e.g., jigawa)"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"new_owner_name\": \"string\",\n  \"new_owner_phone\": \"string\",\n  \"new_owner_email\": \"string\",\n  \"new_owner_address\": \"string\",\n  \"new_plate_number\": \"string\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/transfers/:requestId/submit",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "transfers",
+                        ":requestId",
+                        "submit"
+                      ],
+                      "variable": [
+                        {
+                          "key": "requestId",
+                          "value": "string"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "Transfer submitted successfully.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "Tenant ID (e.g., jigawa)",
+                            "key": "X-Tenant-ID",
+                            "value": "string"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"new_owner_name\": \"string\",\n  \"new_owner_phone\": \"string\",\n  \"new_owner_email\": \"string\",\n  \"new_owner_address\": \"string\",\n  \"new_plate_number\": \"string\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/transfers/:requestId/submit",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "transfers",
+                            ":requestId",
+                            "submit"
+                          ],
+                          "variable": [
+                            {
+                              "key": "requestId",
+                              "value": "string"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "{\n  \"success\": true,\n  \"message\": \"Transfer submitted successfully\"\n}"
+                    },
+                    {
+                      "name": "Submission failed.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "Tenant ID (e.g., jigawa)",
+                            "key": "X-Tenant-ID",
+                            "value": "string"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"new_owner_name\": \"string\",\n  \"new_owner_phone\": \"string\",\n  \"new_owner_email\": \"string\",\n  \"new_owner_address\": \"string\",\n  \"new_plate_number\": \"string\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/transfers/:requestId/submit",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "transfers",
+                            ":requestId",
+                            "submit"
+                          ],
+                          "variable": [
+                            {
+                              "key": "requestId",
+                              "value": "string"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "body": ""
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "initiate-payment",
+              "item": [
+                {
+                  "name": "Initiate payment for transfer",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "X-Tenant-ID",
+                        "value": "string",
+                        "description": "Tenant ID (e.g., jigawa)"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"amount\": 5387.768775634756\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/transfers/:requestId/initiate-payment",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "transfers",
+                        ":requestId",
+                        "initiate-payment"
+                      ],
+                      "variable": [
+                        {
+                          "key": "requestId",
+                          "value": "string"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "Payment initiated successfully.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "Tenant ID (e.g., jigawa)",
+                            "key": "X-Tenant-ID",
+                            "value": "string"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"amount\": 5387.768775634756\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/transfers/:requestId/initiate-payment",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "transfers",
+                            ":requestId",
+                            "initiate-payment"
+                          ],
+                          "variable": [
+                            {
+                              "key": "requestId",
+                              "value": "string"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "{\n  \"success\": true,\n  \"requestId\": \"0e45e33e-3d6b-4535-9312-b0285988e580\",\n  \"paymentUrl\": \"https://checkout.paystack.com/ey9950rkb51bdst\",\n  \"reference\": \"transfer-TRF-1766593093464-376-1766593369414-95NQ2N\",\n  \"amount\": 5000\n}"
+                    },
+                    {
+                      "name": "Payment initiation failed.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "Tenant ID (e.g., jigawa)",
+                            "key": "X-Tenant-ID",
+                            "value": "string"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"amount\": 5387.768775634756\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/transfers/:requestId/initiate-payment",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "transfers",
+                            ":requestId",
+                            "initiate-payment"
+                          ],
+                          "variable": [
+                            {
+                              "key": "requestId",
+                              "value": "string"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "body": ""
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "renewals",
+      "item": [
+        {
+          "name": "{requestId}",
+          "item": [
+            {
+              "name": "verify-payment",
+              "item": [
+                {
+                  "name": "Verify Payment and Auto-Approve Renewal",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "X-Tenant-ID",
+                        "value": "string",
+                        "description": "Tenant ID (e.g., jigawa)"
+                      },
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"reference\": \"string\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/renewals/:requestId/verify-payment",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "renewals",
+                        ":requestId",
+                        "verify-payment"
+                      ],
+                      "variable": [
+                        {
+                          "key": "requestId",
+                          "value": "string"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "Payment verified, Renewal Approved (1 Year).",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "Tenant ID (e.g., jigawa)",
+                            "key": "X-Tenant-ID",
+                            "value": "string"
+                          },
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"reference\": \"string\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/renewals/:requestId/verify-payment",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "renewals",
+                            ":requestId",
+                            "verify-payment"
+                          ],
+                          "variable": [
+                            {
+                              "key": "requestId",
+                              "value": "string"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "body": ""
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Initiate Vehicle Renewal (Lookup + Payment)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-Tenant-ID",
+                "value": "string",
+                "description": "Tenant ID (e.g., jigawa)"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"vin\": \"string\",\n  \"ownerPhone\": \"string\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/renewals",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "renewals"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Renewal initiated, payment URL generated.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "Tenant ID (e.g., jigawa)",
+                    "key": "X-Tenant-ID",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"vin\": \"string\",\n  \"ownerPhone\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/renewals",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "renewals"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "body": ""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "valuation",
+      "item": [
+        {
+          "name": "calculate",
+          "item": [
+            {
+              "name": "Calculate vehicle valuation and duties",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"vin\": \"1HGCM82633A004352\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/valuation/calculate",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "valuation",
+                    "calculate"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "Untitled Response",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"vin\": \"1HGCM82633A004352\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/valuation/calculate",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "valuation",
+                        "calculate"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n  \"vin\": \"string\",\n  \"make\": \"string\",\n  \"model\": \"string\",\n  \"year\": 5667.542730621176,\n  \"priceUSD\": 4496.558929327163,\n  \"priceNGN\": 7738.215896052925,\n  \"customsDuty\": 5554.048542044141,\n  \"vat\": 9584.068811731708,\n  \"levy\": 2506.7762166700104,\n  \"totalValue\": 1563.5199440049962\n}"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "/"
+    }
+  ]
+}

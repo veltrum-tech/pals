@@ -104,7 +104,7 @@ export const TenantDashboard: React.FC = () => {
                     {settings?.name || 'Tenant'} Dashboard
                 </h1>
                 <p className="text-gray-600 mt-1">
-                    {settings?.description || 'Vehicle registration management system'}
+                    Vehicle registration management system
                 </p>
             </div>
 

@@ -381,10 +381,7 @@ export default function ReviewPayment() {
                         </div>
                     </div>
 
-                    {/* Footer Note */}
-                    <p className="text-center text-xs text-gray-400 mt-6">
-                        Your payment will be securely processed
-                    </p>
+                   
                 </div>
             </main>
         </>

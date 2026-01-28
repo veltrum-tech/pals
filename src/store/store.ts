@@ -6,6 +6,8 @@ import { lgaApi } from "@/services/lgaApi";
 import { registrationsApi } from "@/services/registrationsApi";
 import { renewalsApi } from "@/services/renewalsApi";
 import { valuationApi } from "@/services/valuationApi";
+import { authApi } from "@/services/authApi";
+import { tenantApi } from "@/services/tenantApi";
 
 export const store = configureStore({
   reducer: {
@@ -15,6 +17,8 @@ export const store = configureStore({
     [registrationsApi.reducerPath]: registrationsApi.reducer,
     [renewalsApi.reducerPath]: renewalsApi.reducer,
     [valuationApi.reducerPath]: valuationApi.reducer,
+    [authApi.reducerPath]: authApi.reducer,
+    [tenantApi.reducerPath]: tenantApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware()
@@ -23,7 +27,9 @@ export const store = configureStore({
       .concat(lgaApi.middleware)
       .concat(registrationsApi.middleware)
       .concat(renewalsApi.middleware)
-      .concat(valuationApi.middleware),
+      .concat(valuationApi.middleware)
+      .concat(authApi.middleware)
+      .concat(tenantApi.middleware),
 });
 
 // Enable refetchOnFocus and refetchOnReconnect behaviors

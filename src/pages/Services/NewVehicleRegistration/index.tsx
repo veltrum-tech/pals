@@ -6,7 +6,7 @@ const steps = [
     { number: 2, title: "Owner Info", path: "owner-information" },
     { number: 3, title: "Vehicle Details", path: "vehicle-details" },
     { number: 4, title: "Upload Docs", path: "upload-documents" },
-    { number: 5, title: "Review & Pay", path: "review-payment" },
+    { number: 5, title: "Review", path: "review" },
 ]
 
 export default function NewVehicleRegistration() {

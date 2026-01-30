@@ -158,7 +158,7 @@ export default function UploadDocuments() {
                 documentType: getDocumentTypeForAPI(doc.id)
             }))
 
-        navigate("/services/new-vehicle-registration/review-payment", {
+        navigate("/services/new-vehicle-registration/review", {
             state: {
                 ...state,
                 uploadedDocuments: uploadedFiles
@@ -242,8 +242,8 @@ export default function UploadDocuments() {
                                     <div className="w-full bg-gray-200 rounded-full h-2.5 overflow-hidden">
                                         <div
                                             className={`h-full rounded-full transition-all duration-500 ${progressPercent === 100
-                                                    ? 'bg-linear-to-r from-green-500 to-green-600'
-                                                    : 'bg-linear-to-r from-[#B41662] to-pink-500'
+                                                ? 'bg-linear-to-r from-green-500 to-green-600'
+                                                : 'bg-linear-to-r from-[#B41662] to-pink-500'
                                                 }`}
                                             style={{ width: `${progressPercent}%` }}
                                         ></div>
@@ -269,8 +269,8 @@ export default function UploadDocuments() {
                                                 type="button"
                                                 onClick={() => setExpandedDoc(expandedDoc === doc.id ? null : doc.id)}
                                                 className={`w-full flex items-center justify-between p-4 transition-all ${doc.uploaded
-                                                        ? 'bg-green-50 hover:bg-green-100'
-                                                        : 'bg-gray-50 hover:bg-gray-100'
+                                                    ? 'bg-green-50 hover:bg-green-100'
+                                                    : 'bg-gray-50 hover:bg-gray-100'
                                                     }`}
                                             >
                                                 <div className="flex items-center gap-3 text-left flex-1">
@@ -322,8 +322,8 @@ export default function UploadDocuments() {
                                                             onDragLeave={() => setDragOverDoc(null)}
                                                             onDrop={(e) => handleDrop(e, doc.id)}
                                                             className={`border-2 border-dashed rounded-lg p-6 text-center transition-all duration-300 ${dragOverDoc === doc.id
-                                                                    ? 'border-green-500 bg-green-50 scale-[1.02]'
-                                                                    : 'border-gray-300 hover:border-green-400 hover:bg-gray-50'
+                                                                ? 'border-green-500 bg-green-50 scale-[1.02]'
+                                                                : 'border-gray-300 hover:border-green-400 hover:bg-gray-50'
                                                                 }`}
                                                         >
                                                             <div className="w-12 h-12 mx-auto mb-3 bg-gray-100 rounded-full flex items-center justify-center">
@@ -395,8 +395,8 @@ export default function UploadDocuments() {
                                 type="submit"
                                 disabled={!allDocumentsUploaded}
                                 className={`flex-1 sm:flex-none flex items-center justify-center gap-3 py-4 px-8 rounded font-semibold text-white transition-all duration-300 shadow-lg ${allDocumentsUploaded
-                                        ? 'bg-green-600 hover:shadow-green-200 hover:-translate-y-0.5 active:translate-y-0'
-                                        : 'bg-gray-300 cursor-not-allowed shadow-none'
+                                    ? 'bg-green-600 hover:shadow-green-200 hover:-translate-y-0.5 active:translate-y-0'
+                                    : 'bg-gray-300 cursor-not-allowed shadow-none'
                                     }`}
                             >
                                 <span>Review</span>

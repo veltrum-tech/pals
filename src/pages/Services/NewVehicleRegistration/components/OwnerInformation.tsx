@@ -20,7 +20,8 @@ export default function OwnerInformation() {
     const state = location.state as LocationState
 
     const [formData, setFormData] = useState({
-        ownerName: "",
+        firstName: "",
+        lastName: "",
         ownerPhone: "",
         ownerEmail: "",
         ownerAddress: "",
@@ -39,7 +40,8 @@ export default function OwnerInformation() {
         const newErrors: Record<string, string> = {}
 
         if (!formData.title.trim()) newErrors.title = "Title is required"
-        if (!formData.ownerName.trim()) newErrors.ownerName = "Owner name is required"
+        if (!formData.firstName.trim()) newErrors.firstName = "First name is required"
+        if (!formData.lastName.trim()) newErrors.lastName = "Last name is required"
         if (!formData.ownerNin.trim()) {
             newErrors.ownerNin = "NIN is required"
         } else if (!/^\d{11}$/.test(formData.ownerNin)) {
@@ -85,7 +87,10 @@ export default function OwnerInformation() {
         navigate("/services/new-vehicle-registration/vehicle-details", {
             state: {
                 ...state,
-                ownerInfo: formData
+                ownerInfo: {
+                    ...formData,
+                    ownerName: `${formData.firstName} ${formData.lastName}`
+                }
             }
         })
     }
@@ -175,21 +180,40 @@ export default function OwnerInformation() {
                                     <div>
                                         <label htmlFor="ownerName" className="flex items-center gap-2 text-sm font-medium text-gray-700 mb-2">
                                             <User className="w-4 h-4 text-gray-400" />
-                                            Full Name
+                                            First Name
                                         </label>
                                         <input
-                                            id="ownerName"
+                                            id="firstName"
                                             type="text"
-                                            name="ownerName"
-                                            value={formData.ownerName}
+                                            name="firstName"
+                                            value={formData.firstName}
                                             onChange={handleChange}
-                                            className={`w-full border-2 ${errors.ownerName
+                                            className={`w-full border-2 ${errors.firstName
                                                 ? 'border-red-400 focus:border-red-500 focus:ring-red-200'
                                                 : 'border-gray-200 focus:border-green-500 focus:ring-green-200'
                                                 } rounded-lg px-4 py-3.5 focus:outline-none focus:ring-4 text-base transition-all`}
                                             placeholder="Enter full name"
                                         />
-                                        {errors.ownerName && <p className="mt-2 text-sm text-red-600 font-medium">{errors.ownerName}</p>}
+                                        {errors.firstName && <p className="mt-2 text-sm text-red-600 font-medium">{errors.firstName}</p>}
+                                    </div>
+                                    <div>
+                                        <label htmlFor="ownerName" className="flex items-center gap-2 text-sm font-medium text-gray-700 mb-2">
+                                            <User className="w-4 h-4 text-gray-400" />
+                                            Last Name
+                                        </label>
+                                        <input
+                                            id="lastName"
+                                            type="text"
+                                            name="lastName"
+                                            value={formData.lastName}
+                                            onChange={handleChange}
+                                            className={`w-full border-2 ${errors.lastName
+                                                ? 'border-red-400 focus:border-red-500 focus:ring-red-200'
+                                                : 'border-gray-200 focus:border-green-500 focus:ring-green-200'
+                                                } rounded-lg px-4 py-3.5 focus:outline-none focus:ring-4 text-base transition-all`}
+                                            placeholder="Enter full name"
+                                        />
+                                        {errors.lastName && <p className="mt-2 text-sm text-red-600 font-medium">{errors.lastName}</p>}
                                     </div>
 
                                     {/* NIN */}
